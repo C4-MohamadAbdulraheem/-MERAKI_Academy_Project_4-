@@ -57,7 +57,29 @@ const deleteProductById = (req, res) => {
 
 //create a function to update product by id
 
-const updateProductById = (req, res) => {};
+const updateProductById = (req, res) => {
+  const productId = req.params.id;
+  const { title, description, price, comment, relaeaseAt } = req.body;
+  productModel.findByIdAndUpdate(productId,{ title, description, price, comment, relaeaseAt },{new:true})
+  
+  .then((updatedProduct)=>{
+    if(!updatedProduct){
+      res.status(404).json(({
+        success:false,
+        message:`product not found`
+      }))
+    }res.status(200).json({
+      success:true,
+      message:`Succeeded to update product with id: ${productId}`,
+      updatedProduct:updatedProduct
+    })
+  }).catch((err)=>{
+    res.status(500).json({
+      success:false,
+      message:"Server Error"
+    })
+  })
+};
 
 //create a function to create product
 
