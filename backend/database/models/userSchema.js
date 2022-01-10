@@ -9,7 +9,8 @@ const userSchema = new mongoose.Schema({
     age:{type:Number , max:100 , min:8},
     country:String,
     email:{ type:String,unique:true,required:true,toLowerCase:true , maxlength:25 ,minlength:15},
-    password:{type:String,required:true, maxlength:30 ,minlength:10}
+    password:{type:String,required:true, maxlength:30 ,minlength:10},
+    role:{type:mongoose.Types.Schema.ObjectId , ref:"Role"}
 })
 
 module.exports = mongoose.model("User",userSchema)
