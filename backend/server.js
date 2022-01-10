@@ -8,6 +8,7 @@ const productRouter = require("./routes/productRouter");
 const userRouter = require("./routes/userRouter");
 const commentRouter = require("./routes/commentRouter");
 const roleRouter = require("./routes/roleRouter");
+const registerRouter = require("./routes/registerRouter");
 
 
 
@@ -30,7 +31,7 @@ app.use("/comment", commentRouter);
 app.use("/comment", roleRouter);
 
 //create register route with path of "/register"
-app.use("/resister", register);
+app.use("/resister", registerRouter);
 
 
 const PORT = 5000;

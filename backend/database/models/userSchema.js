@@ -15,9 +15,11 @@ const userSchema = new mongoose.Schema({
     maxlength: 25,
     minlength: 15,
   },
-  password: { type: String, required: true, maxlength: 30, minlength: 10 },
+  password: { type: String, required: true, maxlength: 30, minlength: 6 },
   role: { type: mongoose.Schema.Types.ObjectId, ref: "Role" },
-  createdAT :{type:Date , immutable:true,default:()=>{Date.now()}}
-});
+  //read about timestamp
+
+  
+},{ timestamps: true });
 
 module.exports = mongoose.model("User", userSchema);

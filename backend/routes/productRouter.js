@@ -20,5 +20,5 @@ productRouter.delete("/delete/:id", deleteProductById);
 productRouter.put("/update/:id", updateProductById);
 
 // create  endpoint to create product 
-productRouter.post("create", createNewProduct);
+productRouter.post("/create", createNewProduct);
 module.exports = productRouter;
