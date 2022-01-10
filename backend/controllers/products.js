@@ -6,6 +6,20 @@ const productModel = require("../database/models/productSchema");
 const getAllProducts = (req, res) => {};
 
 //create a function to delete product by id
-const deleteProductById= (req,res)=>{} 
 
-module.exports = { getAllProducts,deleteProductById };
+const deleteProductById = (req, res) => {};
+
+//create a function to update product by id
+
+const updateProductById = (req, res) => {};
+
+//create a function to create product
+
+const createNewProduct = (req, res) => {};
+
+module.exports = {
+  getAllProducts,
+  deleteProductById,
+  updateProductById,
+  createNewProduct,
+};
