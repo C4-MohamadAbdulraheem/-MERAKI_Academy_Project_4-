@@ -11,12 +11,13 @@ const userSchema = new mongoose.Schema({
     type: String,
     unique: true,
     required: true,
-    toLowerCase: true,
+    lowercase: true,
     maxlength: 25,
     minlength: 15,
   },
   password: { type: String, required: true, maxlength: 30, minlength: 10 },
   role: { type: mongoose.Schema.Types.ObjectId, ref: "Role" },
+  createdAT :{type:Date , immutable:true,default:()=>{Date.now()}}
 });
 
 module.exports = mongoose.model("User", userSchema);
