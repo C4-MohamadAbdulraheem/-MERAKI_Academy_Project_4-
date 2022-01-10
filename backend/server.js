@@ -31,7 +31,7 @@ app.use("/comment", commentRouter);
 app.use("/role", roleRouter);
 
 //create register route with path of "/register"
-app.use("/resister", registerRouter);
+app.use("/register", registerRouter);
 
 
 

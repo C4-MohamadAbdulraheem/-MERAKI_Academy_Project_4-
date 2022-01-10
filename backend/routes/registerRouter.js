@@ -8,6 +8,6 @@ const registerRouter = express.Router();
 
 //create  endpoint to get all products("/")
 
-registerRouter.get("/", register);
+registerRouter.post("/", register);
 
 module.exports = registerRouter;
