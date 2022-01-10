@@ -4,7 +4,7 @@ const productModel = require("../database/models/productSchema");
 //create a function to get all articles
 
 const getAllProducts = (req, res) => {
-  
+  //take the userid from the token
   productModel
     .find({})
     // .populate("comments")
