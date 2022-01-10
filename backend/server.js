@@ -6,6 +6,9 @@ const db = require("./database/db");
 
 const productRouter = require("./routes/productRouter");
 const userRouter = require("./routes/userRouter");
+const commentRouter = require("./routes/commentRouter");
+
+
 
 
 app.use(cors());
@@ -21,6 +24,9 @@ app.use("/user", userRouter);
 
 //create comment route with path of "/comment"
 app.use("/comment", commentRouter);
+
+//create role route with path of "/comment"
+app.use("/comment", roleRouter);
 
 
 const PORT = 5000;
