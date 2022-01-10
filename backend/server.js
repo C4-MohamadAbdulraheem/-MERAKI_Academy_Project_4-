@@ -10,9 +10,6 @@ const commentRouter = require("./routes/commentRouter");
 const roleRouter = require("./routes/roleRouter");
 const registerRouter = require("./routes/registerRouter");
 
-
-
-
 app.use(cors());
 
 app.use(express.json());
@@ -32,8 +29,6 @@ app.use("/role", roleRouter);
 
 //create register route with path of "/register"
 app.use("/register", registerRouter);
-
-
 
 const PORT = 5000;
 

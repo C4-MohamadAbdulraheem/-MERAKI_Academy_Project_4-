@@ -16,7 +16,7 @@ const getAllProducts = (req, res) => {
           products: products,
         });
       }
-      res.status(200).json({
+      res.status(404).json({
         success: false,
         message: `No Articles Yet`,
       });
