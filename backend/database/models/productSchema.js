@@ -4,6 +4,13 @@ const productSchema = new mongoose.Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
   price: { type: Number, min: 1 },
-  Comment:{type : mongoose.Schema.Types.ObjectId ,ref:"Comment"}
+  Comment: { type: mongoose.Schema.Types.ObjectId, ref: "Comment" },
+  relaeaseAt: {
+    type: Date,
+    immutable: true,
+    default: () => {
+      Date.now();
+    },
+  },
 });
 module.exports = mongoose.model("Product", productSchema);
