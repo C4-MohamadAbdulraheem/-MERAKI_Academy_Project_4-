@@ -9,6 +9,6 @@ const roleRouter = express.Router();
 
 // end point to create new comment
 
-roleRouter.post("/create", createNewRole);
+roleRouter.post("/", createNewRole);
 
 module.exports = roleRouter;

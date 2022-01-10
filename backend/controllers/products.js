@@ -33,26 +33,27 @@ const getAllProducts = (req, res) => {
 
 const deleteProductById = (req, res) => {
   const productId = req.params.id;
-  productModel.findByIdAndDelete(productId).then((productDeleted) => {
-    if (productDeleted){ 
-    res.status(200).json({
-      success:true,
-      message:`Succeeded to delete product with id: ${productId}`
+  productModel
+    .findByIdAndDelete(productId)
+    .then((productDeleted) => {
+      if (productDeleted) {
+        res.status(200).json({
+          success: true,
+          message: `Succeeded to delete product with id: ${productId}`,
+        });
+      } else {
+        res.status(404).json({
+          success: false,
+          message: `product not found`,
+        });
+      }
     })
-    
-
-  }else{
-    res.status(404).json({
-      success:false,
-      message:`product not found`
-    })
-  }
-  }).catch((err)=>{
-    res.status(500).json({
-      success:false,
-      message:`Server Error`
-    })
-  })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: `Server Error`,
+      });
+    });
 };
 
 //create a function to update product by id
@@ -60,25 +61,32 @@ const deleteProductById = (req, res) => {
 const updateProductById = (req, res) => {
   const productId = req.params.id;
   const { title, description, price, comment, relaeaseAt } = req.body;
-  productModel.findByIdAndUpdate(productId,{ title, description, price, comment, relaeaseAt },{new:true})
-  
-  .then((updatedProduct)=>{
-    if(!updatedProduct){
-      res.status(404).json(({
-        success:false,
-        message:`product not found`
-      }))
-    }res.status(200).json({
-      success:true,
-      message:`Succeeded to update product with id: ${productId}`,
-      updatedProduct:updatedProduct
+  productModel
+    .findByIdAndUpdate(
+      productId,
+      { title, description, price, comment, relaeaseAt },
+      { new: true }
+    )
+
+    .then((updatedProduct) => {
+      if (!updatedProduct) {
+        res.status(404).json({
+          success: false,
+          message: `product not found`,
+        });
+      }
+      res.status(200).json({
+        success: true,
+        message: `Succeeded to update product with id: ${productId}`,
+        updatedProduct: updatedProduct,
+      });
     })
-  }).catch((err)=>{
-    res.status(500).json({
-      success:false,
-      message:"Server Error"
-    })
-  })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+      });
+    });
 };
 
 //create a function to create product
@@ -100,7 +108,7 @@ const createNewProduct = (req, res) => {
         .json({ success: true, message: "Product Created", product: product });
     })
     .catch((err) => {
-      res.status(500).json({
+      res.status(404).json({
         success: false,
         message: err.message,
       });

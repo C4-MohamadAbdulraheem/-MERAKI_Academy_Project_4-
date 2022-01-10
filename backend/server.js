@@ -28,10 +28,11 @@ app.use("/user", userRouter);
 app.use("/comment", commentRouter);
 
 //create role route with path of "/comment"
-app.use("/comment", roleRouter);
+app.use("/role", roleRouter);
 
 //create register route with path of "/register"
 app.use("/resister", registerRouter);
+
 
 
 const PORT = 5000;
