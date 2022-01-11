@@ -14,6 +14,8 @@ const roleRouter = require("./routes/roleRouter");
 
 const registerRouter = require("./routes/registerRouter");
 
+const loginRouter = require ("./routes/loginRouter")
+
 app.use(cors());
 
 app.use(express.json());
@@ -33,6 +35,9 @@ app.use("/role", roleRouter);
 
 //create register route with path of "/register"
 app.use("/register", registerRouter);
+
+//create l0gin route with path of "/login"
+app.use("/login", loginRouter);
 
 const PORT = 5000;
 

@@ -22,9 +22,9 @@ const userSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-const SALT = 10
+const salt = 10
 userSchema.pre("save", async function(){
-this.password = await bcrypt.hash(this.password,SALT)
+this.password = await bcrypt.hash(this.password,salt)
 })
 const userModel = mongoose.model("User", userSchema);
 module.exports = {userModel}
