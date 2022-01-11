@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const { userModel } = require("../database/models/userSchema");
-
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 //create function to login a user into website and get the token
 const login = (req, res) => {
   const { email, password } = req.body;
@@ -22,6 +23,7 @@ const login = (req, res) => {
           message: `The password you’ve entered is incorrect`,
         });
       }
+      console.log(result);
       const payLoad = {
         userId: result.userId,
         country: result.country,
@@ -31,19 +33,21 @@ const login = (req, res) => {
         expiresIn: "60m",
       };
       const secret = process.env.SECRET;
-      const token = await jwt.sign(payLoad, options, secret);
-      res.status().json({
+      const token = await jwt.sign(payLoad, secret, options);
+      res.status(200).json({
         success: true,
         message: `Valid login credentials`,
         token: token,
       });
     })
     .catch((err) => {
-      res.status(200).json({
+      res.status(500).json({
         success: false,
         message: "Server Error",
         err: err,
       });
+      //   throw err;
     });
 };
-module.exports = login;
+
+module.exports = { login };
