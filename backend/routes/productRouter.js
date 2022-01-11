@@ -8,6 +8,8 @@ const {
   createNewProduct,
   getProductById,
 } = require("../controllers/products");
+const { authentication } = require("../middleware/authentication");
+const { authorization } = require("../middleware/authorization");
 
 //products endpoints
 //create  endpoint to get all products("/")
@@ -19,12 +21,27 @@ productRouter.get("/", getAllProducts);
 productRouter.get("/:id", getProductById);
 
 //create  endpoint to delete product by id
-productRouter.delete("/delete/:id", deleteProductById);
+productRouter.delete(
+  "/delete/:id",
+  authentication,
+  authorization("Delete_Product_ById"),
+  deleteProductById
+);
 
 //create  endpoint to update product by id
-productRouter.put("/update/:id", updateProductById);
+productRouter.put(
+  "/update/:id",
+  authentication,
+  authorization("Update_Product_ById"),
+  updateProductById
+);
 
 // create  endpoint to create product
-productRouter.post("/create", createNewProduct);
+productRouter.post(
+  "/create",
+  authentication,
+  authorization("Create_New_Product"),
+  createNewProduct
+);
 
 module.exports = productRouter;
