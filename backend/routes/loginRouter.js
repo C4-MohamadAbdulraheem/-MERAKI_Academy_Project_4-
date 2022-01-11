@@ -9,4 +9,4 @@ const loginRouter = express.Router();
 //create  endpoint to get all products("/")
 
 loginRouter.post("/", login);
-module.exports = loginRouter
+module.exports = loginRouter;

@@ -8,5 +8,10 @@ const commentRouter = express.Router();
 //end points for commentRouter
 
 // end point to create new comment
-commentRouter.post("/:id", authentication,authorization("Create_New_Comment"), createNewComment);
+commentRouter.post(
+  "/:id",
+  authentication,
+  authorization("Create_New_Comment"),
+  createNewComment
+);
 module.exports = commentRouter;

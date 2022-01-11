@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const {productModel} = require("../database/models/productSchema");
+const { productModel } = require("../database/models/productSchema");
 
 //create a function to get all articles
 
@@ -34,7 +34,7 @@ const getProductById = (req, res) => {
   const productId = req.params.id;
   productModel
     .findById(productId)
-    .populate("comment","comment")
+    .populate("comment", "comment")
     .then((product) => {
       if (!product) {
         return res.status(404).json({
