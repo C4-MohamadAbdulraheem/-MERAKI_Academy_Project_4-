@@ -5,9 +5,13 @@ const app = express();
 const db = require("./database/db");
 
 const productRouter = require("./routes/productRouter");
+
 const userRouter = require("./routes/userRouter");
+
 const commentRouter = require("./routes/commentRouter");
+
 const roleRouter = require("./routes/roleRouter");
+
 const registerRouter = require("./routes/registerRouter");
 
 app.use(cors());

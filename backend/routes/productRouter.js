@@ -5,7 +5,8 @@ const {
   getAllProducts,
   deleteProductById,
   updateProductById,
-  createNewProduct
+  createNewProduct,
+  getProductById,
 } = require("../controllers/products");
 
 //products endpoints
@@ -13,12 +14,17 @@ const {
 
 productRouter.get("/", getAllProducts);
 
+//create  endpoint to get product by id ("/:id")
+
+productRouter.get("/:id", getProductById);
+
 //create  endpoint to delete product by id
 productRouter.delete("/delete/:id", deleteProductById);
 
 //create  endpoint to update product by id
 productRouter.put("/update/:id", updateProductById);
 
-// create  endpoint to create product 
+// create  endpoint to create product
 productRouter.post("/create", createNewProduct);
+
 module.exports = productRouter;
