@@ -10,8 +10,11 @@ const createNewComment = (req, res) => {
   const newComment = new commentModel({ comment, commenter });
   newComment
     .save()
-    .then((comment) => {
-      productModel.updateOne({ _id: productId },{$push:{comment:comment}});
+    .then(async (comment) => {
+      const comments = await productModel.updateOne(
+        { _id: productId },
+        { $push: { comment: comment } }
+      );
       res.status(201).json({
         success: true,
         message: `The new comment added`,

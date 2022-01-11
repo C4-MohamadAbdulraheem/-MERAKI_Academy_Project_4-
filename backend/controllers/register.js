@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const {userModel} = require("../database/models/userSchema");
+const { userModel } = require("../database/models/userSchema");
 // create a function to register a new user
 
 const register = (req, res) => {
@@ -25,7 +25,7 @@ const register = (req, res) => {
     .catch((err) => {
       res.status(500).json({
         success: false,
-        message: "Server Error",
+        message: err.message,
         err: err,
       });
     });
