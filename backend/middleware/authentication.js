@@ -3,14 +3,14 @@ const jwt = require("jsonwebtoken");
 //create authentication function
 const authentication = (req, res, next) => {
   try {
-    //token is not exist
+    //check the token if exist or not (the user login or not)
     if (!req.headers.authorization) {
       return res.status(403).json({
         success: false,
         message: `Forbidden error you have to login`,
       });
     }
-    //check token if valid or not
+    //check token if valid (expired  ) or not
     const token = req.headers.authorization.split(" ").pop();
 
     const verify = jwt.verify(token, process.env.SECRET, (err, result) => {

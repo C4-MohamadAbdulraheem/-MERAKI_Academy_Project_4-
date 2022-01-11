@@ -15,6 +15,7 @@ const roleRouter = require("./routes/roleRouter");
 const registerRouter = require("./routes/registerRouter");
 
 const loginRouter = require ("./routes/loginRouter")
+const categoryRouter = require("./routes/categoryRouter")
 
 app.use(cors());
 
@@ -36,8 +37,10 @@ app.use("/role", roleRouter);
 //create register route with path of "/register"
 app.use("/register", registerRouter);
 
-//create l0gin route with path of "/login"
+//create login route with path of "/login"
 app.use("/login", loginRouter);
+//create category route with path of "/category"
+app.use("/category", categoryRouter);
 
 const PORT = 5000;
 

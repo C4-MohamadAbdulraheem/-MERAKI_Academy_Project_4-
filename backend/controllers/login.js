@@ -7,7 +7,7 @@ const login = (req, res) => {
   const { email, password } = req.body;
   userModel
     .findOne({ email: email })
-    // i dont under
+
     .populate("role", "-_id -__v")
     .then(async (result) => {
       if (!result) {
@@ -34,6 +34,7 @@ const login = (req, res) => {
       };
       const secret = process.env.SECRET;
       const token = await jwt.sign(payLoad, secret, options);
+
       res.status(200).json({
         success: true,
         message: `Valid login credentials`,
@@ -46,7 +47,6 @@ const login = (req, res) => {
         message: "Server Error",
         err: err,
       });
-      //   throw err;
     });
 };
 
