@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const userModel = require("../database/models/userSchema");
+const {userModel} = require("../database/models/userSchema");
 // create a function to register a new user
 
 const register = (req, res) => {

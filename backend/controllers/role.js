@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const roleModel = require("../database/models/roleSchema");
+const {roleModel }= require("../database/models/roleSchema");
 //create a function to create a new comment
 
 const createNewRole = (req, res) => {

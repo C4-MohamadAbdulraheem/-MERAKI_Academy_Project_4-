@@ -1,14 +1,17 @@
 const mongoose = require("mongoose");
-const commentModel = require("../database/models/commentSchema");
+const { commentModel } = require("../database/models/commentSchema");
+const { productModel } = require("../database/models/productSchema");
 
 //create a function to create a new comment
 
 const createNewComment = (req, res) => {
   const { comment, commenter } = req.body;
+  const productId = req.params.id;
   const newComment = new commentModel({ comment, commenter });
   newComment
     .save()
     .then((comment) => {
+      productModel.updateOne({ _id: productId },{$push:{comment:comment}});
       res.status(201).json({
         success: true,
         message: `The new comment added`,

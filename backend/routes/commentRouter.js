@@ -6,5 +6,5 @@ const commentRouter = express.Router();
 //end points for commentRouter
 
 // end point to create new comment
-commentRouter.post("/", createNewComment);
+commentRouter.post("/:id", createNewComment);
 module.exports = commentRouter;
