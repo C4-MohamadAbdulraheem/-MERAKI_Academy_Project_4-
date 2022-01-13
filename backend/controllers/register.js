@@ -4,7 +4,7 @@ const { userModel } = require("../database/models/userSchema");
 
 const register = (req, res) => {
   
-  const { firstName, lastName, age, country, email, password  } = req.body;
+  const { firstName, lastName, age, country, email, password } = req.body;
   const user = new userModel({
     firstName,
     lastName,
@@ -12,7 +12,7 @@ const register = (req, res) => {
     country,
     email,
     password,
-    
+    role:"61de02795081148b9c17b2ba",
   });
   user
     .save()
