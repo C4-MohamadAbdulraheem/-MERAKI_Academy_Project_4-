@@ -1,9 +1,16 @@
-import Register from "./component/Register";
+import Register from "./component/Register/Register";
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Header from "./component/Header/Header";
-import Login from "./component/Login";
-import Products from "./component/Products";
+import Login from "./component/Login/Login.js";
+import Products from "./component/Products/Products.js";
+import "./App.css"
+// import "../src/component/Header/Header.css"
+// import "../src/component/Header/Header.css"
+// import "../src/component/Header/Header.css"
+// import "../src/component/Header/Header.css"
+
+
 function App() {
   //create a global state for token
   const [token, setToken] = useState("")

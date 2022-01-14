@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import "./Register.css"
 //create funtion component for register
 const Register = () => {
   //create a local component states for all variables
