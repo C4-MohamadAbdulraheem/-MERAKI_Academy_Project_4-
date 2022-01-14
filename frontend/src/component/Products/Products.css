@@ -1,6 +1,7 @@
 .products{
-    
+    display: flex;
+    flex-direction:row;
 }
 .product{
-    border: 1em;
+    border: solid red 1px;
 }
