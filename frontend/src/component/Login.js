@@ -34,8 +34,7 @@ const Login = ({ setToken }) => {
       <input type="password" placeholder="password" onChange={changePassword} />
       <br />
       <button onClick={login}>Login</button>
-      <div>{message
-      }</div>
+      <div>{message}</div>
     </div>
   );
 };

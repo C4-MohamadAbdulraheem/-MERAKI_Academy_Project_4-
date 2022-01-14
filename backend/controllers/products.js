@@ -3,18 +3,56 @@ const { productModel } = require("../database/models/productSchema");
 
 //create a function to get all articles
 
+
+
+// const getAllProducts = (req, res) => {
+//   productModel
+//     .find({})
+//     .populate({
+//       path : 'comment',
+//       populate : {
+//         path : 'commenter',
+        
+//       }
+      
+//     })
+//     .then((result) => {
+//       if (result.length !== 0) {
+//         res
+//           .status(200)
+//           .json({ Success: true, message: "All The Products", products: result });
+//       } else {
+//         res.status(404).json({ Success: false, message: "No Products Yet" });
+//       }
+//     })
+//     .catch((err) => {
+//       res.status(500).json({
+//         success: false,
+//         message: "Server Error",
+//         err: err.message,
+//       });
+//     });
+// };
+
+
 const getAllProducts = (req, res) => {
   //take the userid from the token
   productModel
     .find({})
-    // .populate("comments")
+    .populate({
+      path: "comment",
+      populate: {
+        path: "commenter",
+      },
+    })
     .then((products) => {
       if (products.length) {
-        res.status(200).json({
+       return res.status(200).json({
           success: true,
           message: "All The Products",
           products: products,
         });
+        console.log(products);
       }
       res.status(404).json({
         success: false,
@@ -22,10 +60,13 @@ const getAllProducts = (req, res) => {
       });
     })
     .catch((err) => {
+      console.log(err);
       res.status(500).json({
         success: false,
         message: `Server Error`,
+        err:err
       });
+      
     });
 };
 // cerate function to get product by id
@@ -118,13 +159,14 @@ const updateProductById = (req, res) => {
 //create a function to create product
 
 const createNewProduct = (req, res) => {
-  const { title, description, price, comment, relaeaseAt } = req.body;
+  const { title, description, price, comment, relaeaseAt, image } = req.body;
   const newProduct = new productModel({
     title,
     description,
     price,
     comment,
     relaeaseAt,
+    image,
   });
   newProduct
     .save()
