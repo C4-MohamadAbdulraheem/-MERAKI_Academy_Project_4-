@@ -1,7 +1,26 @@
-.products{
+.products {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.product {
+  display: flex;
+  flex-direction: row;
+  min-width: 40%;
+  height: 15%;
+  gap: 5%;
+  margin: 0.25%;
+  border: solid red 1px;
+
+}
+.product-description{
     display: flex;
-    flex-direction:row;
+    flex-direction: column;
+    width: 30%;
+    height: 100%;
 }
-.product{
-    border: solid red 1px;
-}
+ 
