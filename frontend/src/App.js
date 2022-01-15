@@ -5,15 +5,16 @@ import Header from "./component/Header/Header";
 import Login from "./component/Login/Login.js";
 import Products from "./component/Products/Products.js";
 import Cart from "./component/Cart/Cart";
-import ProductDetailes from "./component/ProductDetailes/ProductDetailes"
+import ProductDetailes from "./component/ProductDetailes/ProductDetailes";
+import Update from "./component/Update/Update"
 import "./App.css";
-
 
 function App() {
   //create a global state for token
   const [token, setToken] = useState("");
   const [cart, setCart] = useState([]);
-  const [productDetailes, setProductDetailes] = useState([])
+  const [productDetailes, setProductDetailes] = useState([]);
+  const [UpdateId, setUpdateId] = useState("")
   console.log(productDetailes);
   return (
     <div className="App">
@@ -24,10 +25,21 @@ function App() {
         <Route path="/login" element={<Login setToken={setToken} />} />
         <Route
           path="/products"
-          element={<Products  setProductDetailes={setProductDetailes} />}
+          element={<Products setProductDetailes={setProductDetailes} />}
         />
         <Route path="/cart" element={<Cart cart={cart} />}></Route>
-        <Route path="/productdetailes"  element={<ProductDetailes setCart={setCart} cart={cart} productDetailes={productDetailes}/>}/>
+        <Route
+          path="/productdetailes"
+          element={
+            <ProductDetailes
+              setCart={setCart}
+              cart={cart}
+              productDetailes={productDetailes}
+              setUpdateId={setUpdateId}
+            />
+          }
+        />
+        <Route path="/update" element={<Update UpdateId={UpdateId} token={token} />}></Route>
       </Routes>
     </div>
   );

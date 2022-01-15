@@ -1,7 +1,9 @@
 import "./ProductDetailes.css";
 import { useState, useEffect } from "react";
-const ProductDetailes = ({ setCart, cart, productDetailes }) => {
+import { Navigate, useNavigate } from "react-router-dom"
+const ProductDetailes = ({ setCart, cart, productDetailes ,setUpdateId}) => {
   const [counter, setCounter] = useState(0);
+  const navigate = useNavigate()
   const products =
     productDetailes.length &&
     productDetailes.map((product) => {
@@ -37,6 +39,26 @@ const ProductDetailes = ({ setCart, cart, productDetailes }) => {
             >
               -
             </button>
+            <div className="comments">
+              <p>comments</p>
+              {product.comment &&
+                product.comment.map((comment) => {
+                  return (
+                    <div>
+                      <p>comment:{comment.comment}</p>
+                      <p>
+                        commenter:
+                        {comment.commenter && comment.commenter.firstName}
+                      </p>
+                    </div>
+                  );
+                })}
+            </div>
+          <button onClick={()=>{
+            setUpdateId(product._id)
+            navigate("/update")
+          }}>Update</button>
+
           </div>
         </div>
       );
