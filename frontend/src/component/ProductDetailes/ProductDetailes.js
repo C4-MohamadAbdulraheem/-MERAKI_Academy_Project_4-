@@ -1,9 +1,33 @@
 import "./ProductDetailes.css";
 import { useState, useEffect } from "react";
-import { Navigate, useNavigate } from "react-router-dom"
-const ProductDetailes = ({ setCart, cart, productDetailes ,setUpdateId}) => {
+import { Navigate, useNavigate } from "react-router-dom";
+import axios from "axios";
+const ProductDetailes = ({
+  setCart,
+  cart,
+  productDetailes,
+  setUpdateId,
+  token,
+}) => {
   const [counter, setCounter] = useState(0);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [message, setMessage] = useState("");
+
+  ///
+  const deleteProducts = (id) => {
+    axios
+      .delete(`http://localhost:5000/product/delete/${id}`, {
+        headers: {
+          Authorization: `Basic ${token}`,
+        },
+      })
+      .then((result) => {
+        setMessage("product deleted");
+      })
+      .catch((err) => {
+        setMessage("error while delete product");
+      });
+  };
   const products =
     productDetailes.length &&
     productDetailes.map((product) => {
@@ -54,11 +78,23 @@ const ProductDetailes = ({ setCart, cart, productDetailes ,setUpdateId}) => {
                   );
                 })}
             </div>
-          <button onClick={()=>{
-            setUpdateId(product._id)
-            navigate("/update")
-          }}>Update</button>
+            <button
+              onClick={() => {
+                setUpdateId(product._id);
+                navigate("/update");
+              }}
+            >
+              Update
+            </button>
 
+            <button
+              onClick={(e) => {
+                deleteProducts(product._id);
+              }}
+            >
+              Delete
+            </button>
+            <p>{message}</p>
           </div>
         </div>
       );

@@ -1,9 +1,8 @@
 import axios from "axios";
-import React ,{useState} from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Update = ({ UpdateId, token }) => {
-  const Navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -20,9 +19,10 @@ const Update = ({ UpdateId, token }) => {
       })
       .then((result) => {
         setMessage("Product Updated");
-      }).catch((err)=>{
-        setMessage("error while updated")
       })
+      .catch((err) => {
+        setMessage("error while updated");
+      });
   };
   return (
     <div>
