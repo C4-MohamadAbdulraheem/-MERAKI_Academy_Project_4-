@@ -1,33 +1,11 @@
-import React from "react";
-import axios from "axios";
-import { useState, useEffect } from "react";
-import "./Products.css";
-
-const Products = ({ setCart, cart ,setProductDetailes}) => {
-  const [result, setResult] = useState([]);
-  const [counter, setCounter] = useState(0)
-  
-  const getAllProducts = () => {
-    axios
-      .get("http://localhost:5000/product")
-      .then((result) => {
-        setResult(result.data.products);
-      })
-      .then((err) => {});
-  };
-  useEffect(() => {
-    getAllProducts();
-  }, []);
-  //create function to add products to cart
-  // const addToCart = (e) => {
-  //   setCart([...cart,product])
-  // };
-  const products =
+import  "./ProductPage.css"
+const ProductPage = () => {
+    const products =
     result.length &&
     result.map((product) => {
       return (
         <div className="product" key={product._id} onClick={()=>{
-          setProductDetailes([product])
+          setProduct([product])
         }}>
           <div className="product-image">
             <img src={product.image} />
@@ -57,12 +35,13 @@ const Products = ({ setCart, cart ,setProductDetailes}) => {
         </div>
       );
     });
+    return (
+        <div className="product-detailes">
 
-  return (
-    <div className="products">
-      {products ? products : <p>There is no products</p>}
-    </div>
-  );
-};
+            
+        </div>
+    )
+}
 
-export default Products;
+export default ProductPage
+ce

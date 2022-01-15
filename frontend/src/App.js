@@ -6,12 +6,13 @@ import Login from "./component/Login/Login.js";
 import Products from "./component/Products/Products.js";
 import Cart from "./component/Cart/Cart";
 import "./App.css";
-import Cart from "./component/Cart/Cart";
+
 
 function App() {
   //create a global state for token
   const [token, setToken] = useState("");
   const [cart, setCart] = useState([]);
+  const [productDetailes, setProductDetailes] = useState([])
   console.log(cart);
   return (
     <div className="App">
@@ -22,7 +23,7 @@ function App() {
         <Route path="/login" element={<Login setToken={setToken} />} />
         <Route
           path="/products"
-          element={<Products setCart={setCart} cart={cart} />}
+          element={<Products setCart={setCart} cart={cart} setProductDetailes={setProductDetailes} />}
         />
         <Route path="/cart" element={<Cart cart={cart} />}></Route>
       </Routes>
