@@ -14,7 +14,7 @@ function App() {
   const [token, setToken] = useState("");
   const [cart, setCart] = useState([]);
   const [productDetailes, setProductDetailes] = useState([])
-  console.log(cart);
+  console.log(productDetailes);
   return (
     <div className="App">
       <Header />
@@ -24,10 +24,10 @@ function App() {
         <Route path="/login" element={<Login setToken={setToken} />} />
         <Route
           path="/products"
-          element={<Products setCart={setCart} cart={cart} setProductDetailes={setProductDetailes} />}
+          element={<Products  setProductDetailes={setProductDetailes} />}
         />
         <Route path="/cart" element={<Cart cart={cart} />}></Route>
-        <Route path="/productdetailes"  element={<ProductDetailes productDetailes={productDetailes}/>}/>
+        <Route path="/productdetailes"  element={<ProductDetailes setCart={setCart} cart={cart} productDetailes={productDetailes}/>}/>
       </Routes>
     </div>
   );

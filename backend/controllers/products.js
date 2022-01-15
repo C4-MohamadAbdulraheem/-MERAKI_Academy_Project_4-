@@ -3,8 +3,6 @@ const { productModel } = require("../database/models/productSchema");
 
 //create a function to get all articles
 
-
-
 // const getAllProducts = (req, res) => {
 //   productModel
 //     .find({})
@@ -12,9 +10,9 @@ const { productModel } = require("../database/models/productSchema");
 //       path : 'comment',
 //       populate : {
 //         path : 'commenter',
-        
+
 //       }
-      
+
 //     })
 //     .then((result) => {
 //       if (result.length !== 0) {
@@ -34,7 +32,6 @@ const { productModel } = require("../database/models/productSchema");
 //     });
 // };
 
-
 const getAllProducts = (req, res) => {
   //take the userid from the token
   productModel
@@ -47,7 +44,7 @@ const getAllProducts = (req, res) => {
     })
     .then((products) => {
       if (products.length) {
-       return res.status(200).json({
+        return res.status(200).json({
           success: true,
           message: "All The Products",
           products: products,
@@ -64,9 +61,8 @@ const getAllProducts = (req, res) => {
       res.status(500).json({
         success: false,
         message: `Server Error`,
-        err:err
+        err: err,
       });
-      
     });
 };
 // cerate function to get product by id
@@ -159,7 +155,8 @@ const updateProductById = (req, res) => {
 //create a function to create product
 
 const createNewProduct = (req, res) => {
-  const { title, description, price, comment, relaeaseAt, image } = req.body;
+  const { title, description, price, comment, relaeaseAt, image, ammount } =
+    req.body;
   const newProduct = new productModel({
     title,
     description,
@@ -167,6 +164,7 @@ const createNewProduct = (req, res) => {
     comment,
     relaeaseAt,
     image,
+    ammount,
   });
   newProduct
     .save()

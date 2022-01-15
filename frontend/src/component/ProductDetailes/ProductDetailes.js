@@ -1,8 +1,8 @@
-import  "./ProductDetailes.css"
+import "./ProductDetailes.css";
 import { useState, useEffect } from "react";
-const ProductDetailes = ({ setCart, cart,productDetailes}) => {
+const ProductDetailes = ({ setCart, cart, productDetailes }) => {
   const [counter, setCounter] = useState(0);
-    const products =
+  const products =
     productDetailes.length &&
     productDetailes.map((product) => {
       return (
@@ -14,7 +14,7 @@ const ProductDetailes = ({ setCart, cart,productDetailes}) => {
             <p> Title:{product.title}</p>
             <p>Description:{product.description}</p>
             <p>Price:{product.price}</p>
-            <p>amount</p>
+            <p>amount:{product.ammount}</p>
             <button
               onClick={(e) => {
                 setCart([...cart, product]);
@@ -22,25 +22,30 @@ const ProductDetailes = ({ setCart, cart,productDetailes}) => {
             >
               add to cart
             </button>
-            <button onClick={()=>{
-              setCounter(counter+1)
-            }}>+</button>
+            <button
+              onClick={() => {
+                setCounter(counter + 1);
+              }}
+            >
+              +
+            </button>
             <p>{counter}</p>
-            <button onClick={()=>{
-              setCounter(counter-1)
-            }}>-</button>
-
-
+            <button
+              onClick={() => {
+                setCounter(counter - 1);
+              }}
+            >
+              -
+            </button>
           </div>
         </div>
       );
     });
-    return (
-        <div className="product-detailes">
+  return (
+    <div className="product-detailes">
+      {products ? products : <p>Error While Reloding page</p>}
+    </div>
+  );
+};
 
-            
-        </div>
-    )
-}
-
-export default ProductDetailes
+export default ProductDetailes;
