@@ -1,19 +1,19 @@
-import  "./ProductPage.css"
-const ProductPage = () => {
+import  "./ProductDetailes.css"
+import { useState, useEffect } from "react";
+const ProductDetailes = ({ setCart, cart,productDetailes}) => {
+  const [counter, setCounter] = useState(0);
     const products =
-    result.length &&
-    result.map((product) => {
+    productDetailes.length &&
+    productDetailes.map((product) => {
       return (
-        <div className="product" key={product._id} onClick={()=>{
-          setProduct([product])
-        }}>
+        <div className="product" key={product._id}>
           <div className="product-image">
             <img src={product.image} />
           </div>
           <div className="product-description">
-            <p>{product.title}</p>
-            <p>{product.description}</p>
-            <p>{product.price}</p>
+            <p> Title:{product.title}</p>
+            <p>Description:{product.description}</p>
+            <p>Price:{product.price}</p>
             <p>amount</p>
             <button
               onClick={(e) => {
@@ -43,5 +43,4 @@ const ProductPage = () => {
     )
 }
 
-export default ProductPage
-ce
+export default ProductDetailes

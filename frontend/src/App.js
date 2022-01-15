@@ -5,6 +5,7 @@ import Header from "./component/Header/Header";
 import Login from "./component/Login/Login.js";
 import Products from "./component/Products/Products.js";
 import Cart from "./component/Cart/Cart";
+import ProductDetailes from "./component/ProductDetailes/ProductDetailes"
 import "./App.css";
 
 
@@ -26,6 +27,7 @@ function App() {
           element={<Products setCart={setCart} cart={cart} setProductDetailes={setProductDetailes} />}
         />
         <Route path="/cart" element={<Cart cart={cart} />}></Route>
+        <Route path="/productdetailes"  element={<ProductDetailes productDetailes={productDetailes}/>}/>
       </Routes>
     </div>
   );

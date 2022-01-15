@@ -3,10 +3,10 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import "./Products.css";
 
-const Products = ({ setCart, cart ,setProductDetailes}) => {
+const Products = ({ setCart, cart, setProductDetailes }) => {
   const [result, setResult] = useState([]);
-  const [counter, setCounter] = useState(0)
-  
+  const [counter, setCounter] = useState(0);
+
   const getAllProducts = () => {
     axios
       .get("http://localhost:5000/product")
@@ -18,17 +18,18 @@ const Products = ({ setCart, cart ,setProductDetailes}) => {
   useEffect(() => {
     getAllProducts();
   }, []);
-  //create function to add products to cart
-  // const addToCart = (e) => {
-  //   setCart([...cart,product])
-  // };
+
   const products =
     result.length &&
     result.map((product) => {
       return (
-        <div className="product" key={product._id} onClick={()=>{
-          setProductDetailes([product])
-        }}>
+        <div
+          className="product"
+          key={product._id}
+          onClick={() => {
+            setProductDetailes([product]);
+          }}
+        >
           <div className="product-image">
             <img src={product.image} />
           </div>
@@ -44,15 +45,21 @@ const Products = ({ setCart, cart ,setProductDetailes}) => {
             >
               add to cart
             </button>
-            <button onClick={()=>{
-              setCounter(counter+1)
-            }}>+</button>
+            <button
+              onClick={() => {
+                setCounter(counter + 1);
+              }}
+            >
+              +
+            </button>
             <p>{counter}</p>
-            <button onClick={()=>{
-              setCounter(counter-1)
-            }}>-</button>
-
-
+            <button
+              onClick={() => {
+                setCounter(counter - 1);
+              }}
+            >
+              -
+            </button>
           </div>
         </div>
       );
