@@ -16,6 +16,7 @@ function App() {
   const [productDetailes, setProductDetailes] = useState([]);
   const [UpdateId, setUpdateId] = useState("")
   console.log(productDetailes);
+  console.log(cart);
   return (
     <div className="App">
       <Header />
@@ -36,6 +37,7 @@ function App() {
               cart={cart}
               productDetailes={productDetailes}
               setUpdateId={setUpdateId}
+              token={token}
             />
           }
         />

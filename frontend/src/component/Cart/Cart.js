@@ -2,6 +2,7 @@ import React from "react";
 import "./Cart.css";
 
 const Cart = ({ cart }) => {
+  console.log(cart);
   const products =
     cart.length &&
     cart.map((product) => {
@@ -14,7 +15,7 @@ const Cart = ({ cart }) => {
             <p>{product.title}</p>
             <p>{product.description}</p>
             <p>{product.price}</p>
-            <p>amount</p>
+            <p>{product.number }</p>
           </div>
         </div>
       );
