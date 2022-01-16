@@ -17,6 +17,7 @@ function App() {
   const [UpdateId, setUpdateId] = useState("")
   console.log(productDetailes);
   console.log(cart);
+  
   return (
     <div className="App">
       <Header />
@@ -28,7 +29,7 @@ function App() {
           path="/products"
           element={<Products setProductDetailes={setProductDetailes} />}
         />
-        <Route path="/cart" element={<Cart cart={cart} />}></Route>
+        <Route path="/cart" element={<Cart cart={cart} setCart= {setCart}/>}></Route>
         <Route
           path="/productdetailes"
           element={

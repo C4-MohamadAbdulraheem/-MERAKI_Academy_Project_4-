@@ -30,6 +30,7 @@ const Navigate = useNavigate()
           key={product._id}
           onClick={() => {
             setProductDetailes([product]);
+            localStorage.setItem("product", JSON.stringify([product]))
             Navigate("/productdetailes")
           }}
         >

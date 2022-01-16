@@ -1,6 +1,6 @@
 import "./ProductDetailes.css";
 import { useState, useEffect } from "react";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import decode from "jwt-decode";
 import axios from "axios";
 const ProductDetailes = ({
@@ -10,18 +10,23 @@ const ProductDetailes = ({
   setUpdateId,
   token,
 }) => {
+  const localToken = localStorage.getItem("token");
+  const product = JSON.parse(localStorage.getItem("product"));
+  console.log(product);
   const [counter, setCounter] = useState(0);
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
-  const role = token && decode(token).role.role;
+  const role = localToken && decode(localToken).role.role;
   console.log(role);
+
+  console.log(localToken);
 
   ///
   const deleteProducts = (id) => {
     axios
       .delete(`http://localhost:5000/product/delete/${id}`, {
         headers: {
-          Authorization: `Basic ${token}`,
+          Authorization: `Basic ${localToken}`,
         },
       })
       .then((result) => {
@@ -32,8 +37,8 @@ const ProductDetailes = ({
       });
   };
   const products =
-    productDetailes.length &&
-    productDetailes.map((product) => {
+    product.length &&
+    product.map((product) => {
       return (
         <div className="product" key={product._id}>
           <div className="product-image">
@@ -48,6 +53,20 @@ const ProductDetailes = ({
               onClick={(e) => {
                 /////////////////////////////////////////
                 setCart([...cart, { ...product, number: counter }]);
+                // console.log(cart);
+
+                // const cartlocal = JSON.parse(
+                //   localStorage.getItem("productCart") || []
+                // );
+                // setCart(cartlocal);
+                // carlocal.push(product);
+                // localStorage.setItem("productCart", JSON.stringify(cartlocal));
+                console.log(cart);
+                if( localStorage.getItem("productCart")==null){
+                  localStorage.setItem("productCart", []);
+                }
+
+                localStorage.setItem("productCart", JSON.stringify([...cart, { ...product, number: counter }]));
               }}
             >
               add to cart

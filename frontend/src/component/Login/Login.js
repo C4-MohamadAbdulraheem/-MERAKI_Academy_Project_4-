@@ -24,7 +24,9 @@ const Login = ({ setToken }) => {
       .post("http://localhost:5000/login", loginInfo)
       .then((result) => {
         setMessage(result.data.message);
+        localStorage.setItem("token", result.data.token);
         setToken(result.data.token);
+        
         navigate("/");
       })
       .catch((err) => {
