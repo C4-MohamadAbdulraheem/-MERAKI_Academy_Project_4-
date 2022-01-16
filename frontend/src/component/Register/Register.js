@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import "./Register.css"
+import "./Register.css";
 //create funtion component for register
 const Register = () => {
   //create a local component states for all variables
@@ -54,35 +54,57 @@ const Register = () => {
 
   return (
     <div className="register">
+      <label for="chk" aria-hidden="true">
+        Register
+      </label>
       <input
+        className="register-inp"
         type="text"
         placeholder="First Name"
         onChange={changeFirstName}
       ></input>
       <br />
       <input
+        className="register-inp"
         type="text"
         placeholder="Last Name"
         onChange={changeLastName}
       ></input>
       <br />
 
-      <input type="number" placeholder="Age" onChange={changeAge}></input>
-      <br />
-
-      <input type="text" placeholder="Country" onChange={changeCountry}></input>
-      <br />
-
-      <input type="email" placeholder="Email" onChange={changeEmail}></input>
+      <input
+        className="register-inp"
+        type="number"
+        placeholder="Age"
+        onChange={changeAge}
+      ></input>
       <br />
 
       <input
+        className="register-inp"
+        type="text"
+        placeholder="Country"
+        onChange={changeCountry}
+      ></input>
+      <br />
+
+      <input
+        className="register-inp"
+        type="email"
+        placeholder="Email"
+        onChange={changeEmail}
+      ></input>
+      <br />
+
+      <input
+        className="register-inp"
         type="password"
         placeholder="Password"
         onChange={changePassword}
       ></input>
+      <br />
 
-      <button onClick={register}>Register</button>
+      <button className="login-btn" onClick={register}>Register</button>
       <p>{massege}</p>
     </div>
   );

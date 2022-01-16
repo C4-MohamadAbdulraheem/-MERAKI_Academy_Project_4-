@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
-import "./Login.css"
+import {  useNavigate } from "react-router-dom";
+import "./Login.css";
 
 const Login = ({ setToken }) => {
   //create a state local variable for login
@@ -8,6 +9,7 @@ const Login = ({ setToken }) => {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const loginInfo = { email, password };
+  const navigate = useNavigate();
 
   //create functions for storing input values inside states
   const changeEmail = (e) => {
@@ -23,6 +25,7 @@ const Login = ({ setToken }) => {
       .then((result) => {
         setMessage(result.data.message);
         setToken(result.data.token);
+        navigate("/");
       })
       .catch((err) => {
         setMessage(err.response.data.message);
@@ -30,11 +33,32 @@ const Login = ({ setToken }) => {
   };
   return (
     <div>
-      <input type="text" placeholder="Email" onChange={changeEmail} />
+      <label for="chk" aria-hidden="true">
+        Log in
+      </label>
       <br />
-      <input type="password" placeholder="password" onChange={changePassword} />
+      <input
+        className="login-inp"
+        type="text"
+        placeholder="Email"
+        onChange={changeEmail}
+      />
       <br />
-      <button onClick={login}>Login</button>
+      <input
+        className="login-inp"
+        type="password"
+        placeholder="password"
+        onChange={changePassword}
+      />
+      <br />
+      <p onClick={()=>{
+        navigate("/register");
+      }}>create an account</p>
+      <br/>
+      <button className="login-btn" onClick={login}>
+        Login
+      </button>
+     
       <div>{message}</div>
     </div>
   );

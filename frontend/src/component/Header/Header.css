@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* gap: 70%; */
+  align-items: center;
+  /* margin: 1%; */
+  background-color: #6d44b8;
+  width: 100%;
+  color: #e0dede;
+  
+
+}
+.search{
+    display: flex;
+    flex-direction: row;
+}
+.nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap:10%
+
+}
+.link{
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    color: #e0dede;
+}

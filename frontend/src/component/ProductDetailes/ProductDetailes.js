@@ -1,7 +1,7 @@
 import "./ProductDetailes.css";
 import { useState, useEffect } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-import decode from "jwt-decode"
+import {  useNavigate } from "react-router-dom";
+import decode from "jwt-decode";
 import axios from "axios";
 const ProductDetailes = ({
   setCart,
@@ -13,7 +13,7 @@ const ProductDetailes = ({
   const [counter, setCounter] = useState(0);
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
-  const role = token && decode(token).role.role
+  const role = token && decode(token).role.role;
   console.log(role);
 
   ///
@@ -47,7 +47,7 @@ const ProductDetailes = ({
             <button
               onClick={(e) => {
                 /////////////////////////////////////////
-                setCart([...cart, {...product,number:counter}]);
+                setCart([...cart, { ...product, number: counter }]);
               }}
             >
               add to cart
@@ -82,31 +82,34 @@ const ProductDetailes = ({
                   );
                 })}
             </div>
-             {role ==="ADMIN"?<><button
-              onClick={() => {
-                setUpdateId(product._id);
-                navigate("/update");
-              }}
-            >
-              Update
-            </button>
+            {role === "ADMIN" ? (
+              <>
+                <button
+                  onClick={() => {
+                    setUpdateId(product._id);
+                    navigate("/update");
+                  }}
+                >
+                  Update
+                </button>
 
-            <button
-              onClick={(e) => {
-                let confirmMessage = window.confirm(
-                  "Are you sure to delete product"
-                );
-                if (confirmMessage) {
-                  deleteProducts(product._id);
+                <button
+                  onClick={(e) => {
+                    let confirmMessage = window.confirm(
+                      "Are you sure to delete product"
+                    );
+                    if (confirmMessage) {
+                      deleteProducts(product._id);
 
-                  navigate("/products");
-                }
-              }}
-            >
-              Delete
-            </button>
-            <p>{message}</p></>:null} 
-            
+                      navigate("/products");
+                    }
+                  }}
+                >
+                  Delete
+                </button>
+                <p>{message}</p>
+              </>
+            ) : null}
           </div>
         </div>
       );
