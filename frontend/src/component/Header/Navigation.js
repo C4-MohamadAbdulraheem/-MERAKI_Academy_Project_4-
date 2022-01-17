@@ -3,11 +3,11 @@ import decode from "jwt-decode";
 import { useState } from "react";
 import Category from "../Category/Category";
 import "./Header.css";
-const Navigation = () => {
+const Navigation = ( {setIsopen,isopen}) => {
   const localToken = localStorage.getItem("token");
   const role = localToken && decode(localToken).role.role;
   console.log(role);
-  const [isopen, setIsopen] = useState(false);
+  
   return (
     <div className="nav">
       <Link to="/register" className="link">
@@ -37,7 +37,7 @@ const Navigation = () => {
         Category
       </Link>
 
-      {isopen ? <Category /> : null}
+     
       {role ? (
         <Link
           className="link"

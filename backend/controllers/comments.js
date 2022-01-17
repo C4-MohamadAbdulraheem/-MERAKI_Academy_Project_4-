@@ -5,8 +5,11 @@ const { productModel } = require("../database/models/productSchema");
 //create a function to create a new comment
 
 const createNewComment = (req, res) => {
-  const { comment, commenter } = req.body;
+  const { comment } = req.body;
   const productId = req.params.id;
+
+  let commenter = req.token.userId;
+  console.log(req.token);
   const newComment = new commentModel({ comment, commenter });
   newComment
     .save()

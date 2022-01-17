@@ -1,11 +1,11 @@
 const jwt = require("jsonwebtoken");
-const jwtdecode = require("jwt-decode");
+// const jwtdecode = require("jwt-decode");
 
 const authorization = (permission) => {
   permission = permission.toLowerCase();
   return (req, res, next) => {
     let token = req.token;
-    token = jwtdecode(token);
+    // token = jwtdecode(token);
     const mapOverpermissions = token.role.permissions.map((ele) => {
       return ele.toLowerCase();
     });

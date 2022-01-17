@@ -7,6 +7,7 @@ const {
   updateProductById,
   createNewProduct,
   getProductById,
+  getProductByCategory,
 } = require("../controllers/products");
 const { authentication } = require("../middleware/authentication");
 const { authorization } = require("../middleware/authorization");
@@ -43,5 +44,6 @@ productRouter.post(
   authorization("Create_New_Product"),
   createNewProduct
 );
+productRouter.get("/get/:category", getProductByCategory);
 
 module.exports = productRouter;

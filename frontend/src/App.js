@@ -8,7 +8,8 @@ import Cart from "./component/Cart/Cart";
 import ProductDetailes from "./component/ProductDetailes/ProductDetailes";
 import Update from "./component/Update/Update"
 import Create from "./component/Create/Create"
-
+import Category from "./component/Category/Category"
+import axios from "axios";
 import "./App.css";
 
 function App() {
@@ -17,19 +18,32 @@ function App() {
   const [cart, setCart] = useState([]);
   const [productDetailes, setProductDetailes] = useState([]);
   const [UpdateId, setUpdateId] = useState("")
+  const [isopen, setIsopen] = useState(false);
+  const [result, setResult] = useState([]);
   console.log(productDetailes);
   console.log(cart);
+
+  ////////////////////////////////////
+  const getAllProducts = () => {
+    axios
+      .get("http://localhost:5000/product")
+      .then((result) => {
+        setResult(result.data.products);
+      })
+      .then((err) => {});
+  };
   
   return (
     <div className="App">
-      <Header />
+      <Header  setIsopen={setIsopen}/>
+      {isopen ? <Category /> : null}
 
       <Routes>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login setToken={setToken} />} />
         <Route
           path="/products"
-          element={<Products setProductDetailes={setProductDetailes} />}
+          element={<Products setProductDetailes={setProductDetailes} getAllProducts={getAllProducts}setResult={setResult}result={result}  />}
         />
         <Route path="/cart" element={<Cart cart={cart} setCart= {setCart}/>}></Route>
         <Route
@@ -41,6 +55,7 @@ function App() {
               productDetailes={productDetailes}
               setUpdateId={setUpdateId}
               token={token}
+              getAllProducts={getAllProducts}
             />
           }
         />

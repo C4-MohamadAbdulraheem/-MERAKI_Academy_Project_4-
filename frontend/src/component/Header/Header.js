@@ -2,7 +2,7 @@ import React from "react";
 import Navigation from "./Navigation";
 import "./Header.css";
 
-const Header = () => {
+const Header = ({setIsopen}) => {
   return (
     <div className="header">
       <header>
@@ -15,7 +15,8 @@ const Header = () => {
         </button>
       </div>
 
-      <Navigation />
+      <Navigation setIsopen = {setIsopen} />
+
     </div>
   );
 };

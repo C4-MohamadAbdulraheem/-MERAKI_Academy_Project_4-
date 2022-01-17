@@ -5,18 +5,11 @@ import { useState, useEffect } from "react";
 import "./Products.css";
 import { useNavigate } from "react-router-dom";
 
-const Products = ({ setCart, cart, setProductDetailes }) => {
-  const [result, setResult] = useState([]);
+const Products = ({ setCart, cart, setProductDetailes ,getAllProducts,result,setResult}) => {
+  
   const [counter, setCounter] = useState(0);
 const Navigate = useNavigate()
-  const getAllProducts = () => {
-    axios
-      .get("http://localhost:5000/product")
-      .then((result) => {
-        setResult(result.data.products);
-      })
-      .then((err) => {});
-  };
+  
   useEffect(() => {
     getAllProducts();
   }, []);

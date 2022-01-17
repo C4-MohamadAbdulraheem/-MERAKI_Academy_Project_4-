@@ -9,6 +9,7 @@ const ProductDetailes = ({
   productDetailes,
   setUpdateId,
   token,
+  getAllProducts,
 }) => {
   const localToken = localStorage.getItem("token");
   const product = JSON.parse(localStorage.getItem("product"));
@@ -16,6 +17,9 @@ const ProductDetailes = ({
   const [counter, setCounter] = useState(0);
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
+  const [isClicked, setIsClicked] = useState(false);
+  const [comment, setComment] = useState();
+  const [messagecomment, setMessagecomment] = useState(null)
   const role = localToken && decode(localToken).role.role;
   console.log(role);
 
@@ -36,6 +40,28 @@ const ProductDetailes = ({
         setMessage(err.response.data.message);
       });
   };
+  const createComment = (id) => {
+    axios
+      .post(
+        `http://localhost:5000/comment/${id}`,
+        { comment },
+        {
+          headers: {
+            Authorization: `Basic ${localToken}`,
+          },
+        }
+      )
+      .then((result) => {
+        // setMessagecomment("comment added")
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(()=>{
+    getAllProducts()
+  },[messagecomment])
+
   const products =
     product.length &&
     product.map((product) => {
@@ -49,41 +75,43 @@ const ProductDetailes = ({
             <p>Description:{product.description}</p>
             <p>Price:{product.price}</p>
             <p>amount:{product.ammount}</p>
-            {localToken?(<>
-            <button
-              onClick={(e) => {
-                
-                setCart([...cart, { ...product, number: counter }]);
-                
-                console.log(cart);
-                if (localStorage.getItem("productCart") == null) {
-                  localStorage.setItem("productCart", []);
-                }
+            {localToken ? (
+              <>
+                <button
+                  onClick={(e) => {
+                    setCart([...cart, { ...product, number: counter }]);
 
-                localStorage.setItem(
-                  "productCart",
-                  JSON.stringify([...cart, { ...product, number: counter }])
-                );
-              }}
-            >
-              add to cart
-            </button>
-            <button
-              onClick={() => {
-                setCounter(counter + 1);
-              }}
-            >
-              +
-            </button>
-            <p>{counter}</p>
-            <button
-              onClick={() => {
-                setCounter(counter - 1);
-              }}
-            >
-              -
-            </button></>):null}
-            
+                    console.log(cart);
+                    if (localStorage.getItem("productCart") == null) {
+                      localStorage.setItem("productCart", []);
+                    }
+
+                    localStorage.setItem(
+                      "productCart",
+                      JSON.stringify([...cart, { ...product, number: counter }])
+                    );
+                  }}
+                >
+                  add to cart
+                </button>
+                <button
+                  onClick={() => {
+                    setCounter(counter + 1);
+                  }}
+                >
+                  +
+                </button>
+                <p>{counter}</p>
+                <button
+                  onClick={() => {
+                    setCounter(counter - 1);
+                  }}
+                >
+                  -
+                </button>
+              </>
+            ) : null}
+
             <div className="comments">
               <p>comments</p>
               {product.comment &&
@@ -99,6 +127,29 @@ const ProductDetailes = ({
                   );
                 })}
             </div>
+            {isClicked ? (
+              <input
+                type="text"
+                placeholder=" comment"
+                onChange={(e) => {
+                  setComment(e.target.value);
+                }}
+              />
+            ) : null}
+            <button
+              onClick={() => {
+                if (!comment) {
+                  setIsClicked(!isClicked);
+                } else {
+                  createComment(product._id);
+                  setIsClicked(!isClicked);
+                  getAllProducts()
+                }
+              }}
+            >
+              Add comment
+            </button>
+            {/* {messagecomment?messagecomment:null} */}
             {role === "ADMIN" ? (
               <>
                 <button
