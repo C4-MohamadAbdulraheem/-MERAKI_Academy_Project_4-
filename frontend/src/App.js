@@ -7,6 +7,8 @@ import Products from "./component/Products/Products.js";
 import Cart from "./component/Cart/Cart";
 import ProductDetailes from "./component/ProductDetailes/ProductDetailes";
 import Update from "./component/Update/Update"
+import Create from "./component/Create/Create"
+
 import "./App.css";
 
 function App() {
@@ -43,6 +45,7 @@ function App() {
           }
         />
         <Route path="/update" element={<Update UpdateId={UpdateId} token={token} />}></Route>
+        <Route path="/create" element={<Create token={token}/>}></Route>
       </Routes>
     </div>
   );

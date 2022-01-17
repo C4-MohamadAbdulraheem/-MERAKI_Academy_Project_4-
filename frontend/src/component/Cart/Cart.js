@@ -2,20 +2,18 @@ import React, { useState } from "react";
 import "./Cart.css";
 
 const Cart = ({ cart, setCart }) => {
-  // let [productCart, setProductCart] = useState();
   const productCart = JSON.parse(localStorage.getItem("productCart"));
+  console.log(productCart);
   const handleRemove = (id) => {
     const filter = productCart.filter((ele) => ele._id !== id);
+
     if (filter) {
       setCart(filter);
-      console.log(filter);
+
       localStorage.setItem("productCart", JSON.stringify(filter));
     }
   };
 
-  console.log(cart);
-  //  productCart = JSON.parse(localStorage.getItem("productCart"));
-  console.log(productCart);
   const products =
     productCart &&
     productCart.length &&

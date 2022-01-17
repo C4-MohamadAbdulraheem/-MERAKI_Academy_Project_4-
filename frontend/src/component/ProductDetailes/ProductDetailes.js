@@ -49,24 +49,21 @@ const ProductDetailes = ({
             <p>Description:{product.description}</p>
             <p>Price:{product.price}</p>
             <p>amount:{product.ammount}</p>
+            {localToken?(<>
             <button
               onClick={(e) => {
-                /////////////////////////////////////////
+                
                 setCart([...cart, { ...product, number: counter }]);
-                // console.log(cart);
-
-                // const cartlocal = JSON.parse(
-                //   localStorage.getItem("productCart") || []
-                // );
-                // setCart(cartlocal);
-                // carlocal.push(product);
-                // localStorage.setItem("productCart", JSON.stringify(cartlocal));
+                
                 console.log(cart);
-                if( localStorage.getItem("productCart")==null){
+                if (localStorage.getItem("productCart") == null) {
                   localStorage.setItem("productCart", []);
                 }
 
-                localStorage.setItem("productCart", JSON.stringify([...cart, { ...product, number: counter }]));
+                localStorage.setItem(
+                  "productCart",
+                  JSON.stringify([...cart, { ...product, number: counter }])
+                );
               }}
             >
               add to cart
@@ -85,7 +82,8 @@ const ProductDetailes = ({
               }}
             >
               -
-            </button>
+            </button></>):null}
+            
             <div className="comments">
               <p>comments</p>
               {product.comment &&

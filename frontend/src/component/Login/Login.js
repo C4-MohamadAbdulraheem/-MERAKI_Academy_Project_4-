@@ -8,6 +8,7 @@ const Login = ({ setToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  // const [isLogged, setIsLogged] = useState(false)
   const loginInfo = { email, password };
   const navigate = useNavigate();
 
@@ -26,6 +27,7 @@ const Login = ({ setToken }) => {
         setMessage(result.data.message);
         localStorage.setItem("token", result.data.token);
         setToken(result.data.token);
+        
         
         navigate("/");
       })
