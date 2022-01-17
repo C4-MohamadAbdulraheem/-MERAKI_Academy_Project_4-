@@ -3,11 +3,14 @@ import decode from "jwt-decode";
 import { useState } from "react";
 import Category from "../Category/Category";
 import "./Header.css";
-const Navigation = ( {setIsopen,isopen}) => {
+import Dropdown from "react-dropdown";
+const Navigation = ({ setIsopen, isopen }) => {
   const localToken = localStorage.getItem("token");
   const role = localToken && decode(localToken).role.role;
   console.log(role);
-  
+  console.log(isopen);
+  //////////////////////////
+
   return (
     <div className="nav">
       <Link to="/register" className="link">
@@ -27,17 +30,21 @@ const Navigation = ( {setIsopen,isopen}) => {
           Create Product
         </Link>
       ) : null}
-      <Link
-        to="#"
+      {/* <Link
+       
         className="link"
         onClick={() => {
           setIsopen(!isopen);
+          console.log(isopen);
         }}
       >
         Category
-      </Link>
+      </Link> */}
+      <p className="link" onClick={() => {
+          setIsopen(!isopen);
+          console.log(isopen);
+        }}>Category</p>
 
-     
       {role ? (
         <Link
           className="link"

@@ -32,10 +32,11 @@ function App() {
       })
       .then((err) => {});
   };
+  console.log(isopen);
   
   return (
     <div className="App">
-      <Header  setIsopen={setIsopen}/>
+      <Header  setIsopen={setIsopen} isopen={isopen}/>
       {isopen ? <Category /> : null}
 
       <Routes>

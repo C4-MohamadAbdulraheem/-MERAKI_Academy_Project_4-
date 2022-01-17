@@ -2,16 +2,15 @@
 import "./Category.css";
 const Category = () => {
     return (
-        // <ul>
-        //     <li>Tv</li>
-        //     <li>mobile</li>
-        //     <li>laptop</li>
+    
+       <div className="Category">
+           <p>|     TVs     |</p>
+           <p>|     Mobiles     |</p>
+           <p>|     Laptops     |</p>
+           <p>|     Ipads     |</p>
+           <p>|     Accessories     |</p>
 
-        // </ul>
-        <list>
-            <li>Tv</li>
-            <li>mobile</li>
-        </list>
+       </div>
     )
 }
 
