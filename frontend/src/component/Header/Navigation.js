@@ -40,10 +40,15 @@ const Navigation = ({ setIsopen, isopen }) => {
       >
         Category
       </Link> */}
-      <p className="link" onClick={() => {
+      <p
+        className="link"
+        onClick={() => {
           setIsopen(!isopen);
           console.log(isopen);
-        }}>Category</p>
+        }}
+      >
+        Category
+      </p>
 
       {role ? (
         <Link

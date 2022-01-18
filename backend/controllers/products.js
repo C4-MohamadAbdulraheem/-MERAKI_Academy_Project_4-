@@ -155,8 +155,16 @@ const updateProductById = (req, res) => {
 //create a function to create product
 
 const createNewProduct = (req, res) => {
-  const { title, description, price, comment, relaeaseAt, image, ammount,category } =
-    req.body;
+  const {
+    title,
+    description,
+    price,
+    comment,
+    relaeaseAt,
+    image,
+    ammount,
+    category,
+  } = req.body;
   const newProduct = new productModel({
     title,
     description,
@@ -165,7 +173,7 @@ const createNewProduct = (req, res) => {
     relaeaseAt,
     image,
     ammount,
-    category
+    category,
   });
   newProduct
     .save()
@@ -214,7 +222,40 @@ const getProductByCategory = (req, res) => {
       });
     });
 };
+const getProductBytitle = (req, res) => {
+  const title = req.params.title;
+  productModel
+    .find({ title: title })
+    .populate({
+      path: "comment",
+      populate: {
+        path: "commenter",
+      },
+    })
 
+    .then((products) => {
+      if (products.length) {
+        return res.status(200).json({
+          success: true,
+          message: ` The Products with title ${title}`,
+          products: products,
+        });
+        console.log(products);
+      }
+      res.status(404).json({
+        success: false,
+        message: `No Products with title ${title}`,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        success: false,
+        message: `Server Error`,
+        err: err,
+      });
+    });
+};
 module.exports = {
   getAllProducts,
   deleteProductById,
@@ -222,4 +263,5 @@ module.exports = {
   createNewProduct,
   getProductById,
   getProductByCategory,
+  getProductBytitle,
 };

@@ -19,7 +19,8 @@ const ProductDetailes = ({
   const [message, setMessage] = useState("");
   const [isClicked, setIsClicked] = useState(false);
   const [comment, setComment] = useState();
-  const [messagecomment, setMessagecomment] = useState(null)
+  const [messagecomment, setMessagecomment] = useState(null);
+  // const [comments, setComments] = useState([])
   const role = localToken && decode(localToken).role.role;
   console.log(role);
 
@@ -52,15 +53,16 @@ const ProductDetailes = ({
         }
       )
       .then((result) => {
-        // setMessagecomment("comment added")
+        // setComments(result.data.comment);
+        // console.log(comments);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  useEffect(()=>{
-    getAllProducts()
-  },[messagecomment])
+  // useEffect(()=>{
+  //   getAllProducts()
+  // },[comments])
 
   const products =
     product.length &&
@@ -143,7 +145,6 @@ const ProductDetailes = ({
                 } else {
                   createComment(product._id);
                   setIsClicked(!isClicked);
-                  getAllProducts()
                 }
               }}
             >
