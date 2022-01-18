@@ -11,6 +11,7 @@ import Create from "./component/Create/Create"
 import Category from "./component/Category/Category"
 import axios from "axios";
 import "./App.css";
+import ProductsByCategory from "./component/productsByCategory/ProductsByCategory";
 
 function App() {
   //create a global state for token
@@ -20,6 +21,7 @@ function App() {
   const [UpdateId, setUpdateId] = useState("")
   const [isopen, setIsopen] = useState(false);
   const [result, setResult] = useState([]);
+  const [productCategory, setProductCategory] = useState([])
   console.log(productDetailes);
   console.log(cart);
 
@@ -37,7 +39,7 @@ function App() {
   return (
     <div className="App">
       <Header  setIsopen={setIsopen} isopen={isopen}/>
-      {isopen ? <Category /> : null}
+      {isopen ? <Category setProductCategory={setProductCategory} /> : null}
 
       <Routes>
         <Route path="/register" element={<Register />} />
@@ -47,6 +49,7 @@ function App() {
           element={<Products setProductDetailes={setProductDetailes} getAllProducts={getAllProducts}setResult={setResult}result={result}  />}
         />
         <Route path="/cart" element={<Cart cart={cart} setCart= {setCart}/>}></Route>
+        <Route path="category" element={<ProductsByCategory productCategory={productCategory} setProductDetailes={setProductDetailes} getAllProducts={getAllProducts}setResult={setResult}result={result} />}/>
         <Route
           path="/productdetailes"
           element={
