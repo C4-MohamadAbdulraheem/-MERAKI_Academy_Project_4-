@@ -71,7 +71,12 @@ const getProductById = (req, res) => {
   const productId = req.params.id;
   productModel
     .findById(productId)
-    .populate("comment", "comment")
+    .populate({
+      path: "comment",
+      populate: {
+        path: "commenter",
+      },
+    })
     .then((product) => {
       if (!product) {
         return res.status(404).json({

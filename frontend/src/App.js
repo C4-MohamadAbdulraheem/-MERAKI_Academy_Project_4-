@@ -20,12 +20,28 @@ function App() {
   const [productDetailes, setProductDetailes] = useState([]);
   const [UpdateId, setUpdateId] = useState("");
   const [isopen, setIsopen] = useState(false);
+  //array of products get from getallproducts function
   const [result, setResult] = useState([]);
   const [productCategory, setProductCategory] = useState([]);
   //create usestate for product searchParam
   const [productSearch, setProductSearch] = useState([]);
   console.log(productDetailes);
   console.log(cart);
+  ////////////
+  const [productId, setProductId] = useState("")
+  //create pagination use states
+  const [currentPage, setCurrentPage] = useState(1);
+  //
+  const [productsPerPage, setProductsPerPage] = useState(5);
+  //logic for pagination
+
+  const indexOfLastProduct = currentPage * productsPerPage;
+  ////////////
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  //////////////////////////
+  const currentProducts = result.slice(indexOfFirstProduct, indexOfLastProduct);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   ////////////////////////////////////
   const getAllProducts = () => {
@@ -37,6 +53,15 @@ function App() {
       .then((err) => {});
   };
   console.log(isopen);
+  //////////////////////////////
+  const getProductById = (id)=>{
+    axios.get(`http://localhost:5000/product/${id}`).then((result)=>{
+      setProductDetailes([result.data.product])
+      console.log(result.data.product);
+    }).catch((err)=>{
+      console.log(err);
+    })
+  }
 
   return (
     <div className="App">
@@ -57,7 +82,12 @@ function App() {
               setProductDetailes={setProductDetailes}
               getAllProducts={getAllProducts}
               setResult={setResult}
-              result={result}
+              resultpage={currentProducts}
+              productsPerPage={productsPerPage}
+              totalProducts={result.length}
+              paginate={paginate}
+              getProductById={getProductById}
+              setProductId={setProductId}
             />
           }
         />
@@ -87,6 +117,8 @@ function App() {
               setUpdateId={setUpdateId}
               token={token}
               getAllProducts={getAllProducts}
+              getProductById={getProductById}
+              productId={productId}
             />
           }
         />

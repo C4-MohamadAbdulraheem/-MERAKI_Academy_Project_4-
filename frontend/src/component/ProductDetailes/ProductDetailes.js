@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import decode from "jwt-decode";
 import axios from "axios";
+
 const ProductDetailes = ({
   setCart,
   cart,
@@ -10,6 +11,8 @@ const ProductDetailes = ({
   setUpdateId,
   token,
   getAllProducts,
+  productId,
+  getProductById,
 }) => {
   const localToken = localStorage.getItem("token");
   const product = JSON.parse(localStorage.getItem("product"));
@@ -18,9 +21,9 @@ const ProductDetailes = ({
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
   const [isClicked, setIsClicked] = useState(false);
-  const [comment, setComment] = useState();
+  const [comment, setComment] = useState("");
   const [messagecomment, setMessagecomment] = useState(null);
-  // const [comments, setComments] = useState([])
+  const [comments, setComments] = useState([]);
   const role = localToken && decode(localToken).role.role;
   console.log(role);
 
@@ -53,20 +56,20 @@ const ProductDetailes = ({
         }
       )
       .then((result) => {
-        // setComments(result.data.comment);
+        setComments(result.data.comment);
         // console.log(comments);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  // useEffect(()=>{
-  //   getAllProducts()
-  // },[comments])
+  useEffect(() => {
+    getProductById(productId);
+  }, [comments]);
 
   const products =
-    product.length &&
-    product.map((product) => {
+    productDetailes.length &&
+    productDetailes.map((product) => {
       return (
         <div className="product" key={product._id}>
           <div className="product-image">
@@ -116,6 +119,7 @@ const ProductDetailes = ({
 
             <div className="comments">
               <p>comments</p>
+              {/* <p>{comment && <p>{comment}</p>}</p> */}
               {product.comment &&
                 product.comment.map((comment) => {
                   return (

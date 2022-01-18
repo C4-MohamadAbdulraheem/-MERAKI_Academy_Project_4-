@@ -4,27 +4,47 @@ import { useState, useEffect } from "react";
 
 import "./Products.css";
 import { useNavigate } from "react-router-dom";
+import Pagination from "../Pagination/Pagination";
 
-const Products = ({ setCart, cart, setProductDetailes ,getAllProducts,result,setResult}) => {
+const Products = ({
+  setCart,
+  cart,
+  setProductDetailes,
+  getAllProducts,
+  result,
+  setResult,
+  productsPerPage,
+  totalProducts,
+  paginate,
+  resultpage,
+  getProductById,
+  setProductId
   
+}) => {
   const [counter, setCounter] = useState(0);
-const Navigate = useNavigate()
-  
+
+  const Navigate = useNavigate();
+
   useEffect(() => {
     getAllProducts();
   }, []);
 
+  
+  
+console.log(totalProducts);
   const products =
-    result.length &&
-    result.map((product) => {
+  resultpage.length &&
+  resultpage.map((product) => {
       return (
         <div
           className="product"
           key={product._id}
           onClick={() => {
-            setProductDetailes([product]);
-            localStorage.setItem("product", JSON.stringify([product]))
-            Navigate("/productdetailes")
+            // setProductDetailes([product]);
+            // localStorage.setItem("product", JSON.stringify([product]));
+            getProductById(product._id)
+            setProductId(product._id)
+            Navigate("/productdetailes");
           }}
         >
           <div className="product-image">
@@ -63,9 +83,16 @@ const Navigate = useNavigate()
     });
 
   return (
-    <div className="products">
-      {products ? products : <p>There is no products</p>}
-    </div>
+    <>
+      <div className="products">
+        {products ? products : <p>There is no products</p>}
+      </div>
+      <Pagination
+        productsPerPage={productsPerPage}
+        totalProducts={totalProducts}
+        paginate={paginate}
+      />
+    </>
   );
 };
 
