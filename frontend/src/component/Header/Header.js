@@ -1,21 +1,13 @@
-import React, { useState }from "react";
+import React, { useState } from "react";
 import Navigation from "./Navigation";
 import "./Header.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = ({ setIsopen, isopen, setProductSearch }) => {
   const [title, setTitle] = useState("");
-  const navigate =useNavigate()
-  const search = () => {
-    axios
-      .get(`http://localhost:5000/product/search/${title}`)
-      .then((result) => {
-        setProductSearch(result.data.products);
-        
-      })
-      .then((err) => {});
-  };
+  const navigate = useNavigate();
+
   return (
     <div className="header">
       <header>
@@ -28,14 +20,24 @@ const Header = ({ setIsopen, isopen, setProductSearch }) => {
           type="text"
           onChange={(e) => {
             setTitle(e.target.value);
+            e.key = "enter";
           }}
         />
-        <button type="button" className="serach-btn" onClick={()=>{
-          search()
-          navigate("/search")
-        }}>
-          serach
-        </button>
+        {title ? (
+          <Link
+            type="button"
+            className="serach-btn"
+            to={`/search/${title}`}
+            // onClick={() => {
+            //   search();
+            //   navigate("/search");
+            // }}
+          >
+            <button onClick={(e) => e.key == "enter"}>serach</button>
+          </Link>
+        ) : (
+          <button>serach</button>
+        )}
       </div>
 
       <Navigation setIsopen={setIsopen} isopen={isopen} />

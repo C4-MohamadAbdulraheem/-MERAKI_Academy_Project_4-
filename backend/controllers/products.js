@@ -49,7 +49,6 @@ const getAllProducts = (req, res) => {
           message: "All The Products",
           products: products,
         });
-        console.log(products);
       }
       res.status(404).json({
         success: false,

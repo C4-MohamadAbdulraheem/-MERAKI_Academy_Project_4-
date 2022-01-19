@@ -2,28 +2,64 @@ import "./Search.css";
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Pagination from "../Pagination/Pagination";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useParams ,Link} from "react-router-dom";
 
-const Search = ({ setProductDetailes, productSearch }) => {
+const Search = ({ setProductDetailes }) => {
+  const [productSearch, setProductSearch] = useState([]);
+//create pagination use states
+const [currentPage, setCurrentPage] = useState(1);
+//
+const [productsPerPage, setProductsPerPage] = useState(5);
+//logic for pagination
+
+const indexOfLastProduct = currentPage * productsPerPage;
+////////////
+const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+//////////////////////////
+const currentProducts = productSearch.slice(
+  indexOfFirstProduct,
+  indexOfLastProduct
+);
+
+const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+
+
+  
   const [counter, setCounter] = useState(0);
   const Navigate = useNavigate();
+const {title} =useParams()
+  const search = (title) => {
+    axios
+      .get(`http://localhost:5000/product/search/${title}`)
+      .then((result) => {
+        setProductSearch(result.data.products);
+      })
+      .then((err) => {});
+  };
+  useEffect(()=>{
+    search(title)
+  },[])
 
   const products =
-    productSearch.length &&
-    productSearch.map((product) => {
+  currentProducts.length &&
+  currentProducts.map((product) => {
       return (
         <div
           className="product"
           key={product._id}
-          onClick={() => {
-            setProductDetailes([product]);
-            localStorage.setItem("product", JSON.stringify([product]));
-            Navigate("/productdetailes");
-          }}
+          // onClick={() => {
+          //   setProductDetailes([product]);
+          //   localStorage.setItem("product", JSON.stringify([product]));
+          //   Navigate("/productdetailes");
+          // }}
         >
           <div className="product-image">
-            <img src={product.image} />
+          <Link to={`/productdetailes/${product._id}`}>
+                <img src={product.image} />
+              </Link>
           </div>
           <div className="product-description">
             <p>Title:{product.title}</p>
@@ -58,9 +94,14 @@ const Search = ({ setProductDetailes, productSearch }) => {
     });
 
   return (
+    <>
     <div className="products">
       {products ? products : <p>There is no products</p>}
     </div>
+     <Pagination productsPerPage={productsPerPage}
+     totalProducts={productSearch.length}
+     paginate={paginate}></Pagination>
+     </>
   );
 };
 

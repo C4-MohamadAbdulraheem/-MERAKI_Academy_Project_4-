@@ -44,7 +44,6 @@ const Navigation = ({ setIsopen, isopen }) => {
         className="link"
         onClick={() => {
           setIsopen(!isopen);
-          console.log(isopen);
         }}
       >
         Category

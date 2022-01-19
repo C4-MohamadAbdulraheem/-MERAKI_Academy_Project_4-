@@ -1,35 +1,42 @@
 import "./ProductDetailes.css";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import decode from "jwt-decode";
 import axios from "axios";
-
 const ProductDetailes = ({
   setCart,
   cart,
-  productDetailes,
   setUpdateId,
-  token,
-  getAllProducts,
+
   productId,
-  getProductById,
 }) => {
   const localToken = localStorage.getItem("token");
   const product = JSON.parse(localStorage.getItem("product"));
-  console.log(product);
+
   const [counter, setCounter] = useState(0);
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
   const [isClicked, setIsClicked] = useState(false);
   const [comment, setComment] = useState("");
-  const [messagecomment, setMessagecomment] = useState(null);
+  const [productDetailes, setProductDetailes] = useState([]);
+
   const [comments, setComments] = useState([]);
   const role = localToken && decode(localToken).role.role;
   console.log(role);
+  const { id } = useParams();
 
   console.log(localToken);
 
   ///
+
+  const getProductById = () => {
+    axios
+      .get(`http://localhost:5000/product/${id}`)
+      .then((result) => {
+        setProductDetailes([result.data.product]);
+      })
+      .catch((err) => {});
+  };
   const deleteProducts = (id) => {
     axios
       .delete(`http://localhost:5000/product/delete/${id}`, {
@@ -57,7 +64,6 @@ const ProductDetailes = ({
       )
       .then((result) => {
         setComments(result.data.comment);
-        // console.log(comments);
       })
       .catch((err) => {
         console.log(err);
@@ -119,7 +125,6 @@ const ProductDetailes = ({
 
             <div className="comments">
               <p>comments</p>
-              {/* <p>{comment && <p>{comment}</p>}</p> */}
               {product.comment &&
                 product.comment.map((comment) => {
                   return (
@@ -154,7 +159,6 @@ const ProductDetailes = ({
             >
               Add comment
             </button>
-            {/* {messagecomment?messagecomment:null} */}
             {role === "ADMIN" ? (
               <>
                 <button

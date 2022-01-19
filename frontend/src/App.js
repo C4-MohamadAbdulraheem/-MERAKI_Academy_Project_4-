@@ -22,13 +22,11 @@ function App() {
   const [isopen, setIsopen] = useState(false);
   //array of products get from getallproducts function
   const [result, setResult] = useState([]);
-  const [productCategory, setProductCategory] = useState([]);
+
   //create usestate for product searchParam
-  const [productSearch, setProductSearch] = useState([]);
-  console.log(productDetailes);
-  console.log(cart);
+
   ////////////
-  const [productId, setProductId] = useState("")
+  const [productId, setProductId] = useState("");
   //create pagination use states
   const [currentPage, setCurrentPage] = useState(1);
   //
@@ -52,25 +50,13 @@ function App() {
       })
       .then((err) => {});
   };
-  console.log(isopen);
+
   //////////////////////////////
-  const getProductById = (id)=>{
-    axios.get(`http://localhost:5000/product/${id}`).then((result)=>{
-      setProductDetailes([result.data.product])
-      console.log(result.data.product);
-    }).catch((err)=>{
-      console.log(err);
-    })
-  }
 
   return (
     <div className="App">
-      <Header
-        setIsopen={setIsopen}
-        isopen={isopen}
-        setProductSearch={setProductSearch}
-      />
-      {isopen ? <Category setProductCategory={setProductCategory} /> : null}
+      <Header setIsopen={setIsopen} isopen={isopen} />
+      {isopen ? <Category /> : null}
 
       <Routes>
         <Route path="/register" element={<Register />} />
@@ -79,14 +65,11 @@ function App() {
           path="/products"
           element={
             <Products
-              setProductDetailes={setProductDetailes}
               getAllProducts={getAllProducts}
-              setResult={setResult}
               resultpage={currentProducts}
               productsPerPage={productsPerPage}
               totalProducts={result.length}
               paginate={paginate}
-              getProductById={getProductById}
               setProductId={setProductId}
             />
           }
@@ -95,42 +78,29 @@ function App() {
           path="/cart"
           element={<Cart cart={cart} setCart={setCart} />}
         ></Route>
+        <Route path="/category/:category" element={<ProductsByCategory />} />
         <Route
-          path="category"
-          element={
-            <ProductsByCategory
-              productCategory={productCategory}
-              setProductDetailes={setProductDetailes}
-              getAllProducts={getAllProducts}
-              setResult={setResult}
-              result={result}
-            />
-          }
-        />
-        <Route
-          path="/productdetailes"
+          path="/productdetailes/:id"
           element={
             <ProductDetailes
               setCart={setCart}
               cart={cart}
               productDetailes={productDetailes}
               setUpdateId={setUpdateId}
-              token={token}
-              getAllProducts={getAllProducts}
-              getProductById={getProductById}
+              // token={token}
+              // getAllProducts={getAllProducts}
               productId={productId}
             />
           }
         />
         <Route
-          path="search"
+          path="/search/:title"
           element={
             <Search
               setProductDetailes={setProductDetailes}
               getAllProducts={getAllProducts}
               setResult={setResult}
               result={result}
-              productSearch={productSearch}
             />
           }
         />
