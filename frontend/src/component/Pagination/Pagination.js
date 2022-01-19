@@ -1,4 +1,5 @@
 import React from "react";
+import "./Pagination.css"
 
 const Pagination = ({ productsPerPage, totalProducts, paginate }) => {
   const pageNumbers = [];
@@ -9,17 +10,17 @@ const Pagination = ({ productsPerPage, totalProducts, paginate }) => {
 
   console.log(totalProducts);
   return (
-    <nav>
-      <ul className="pagination">
+    <div className="pagination">
+      {/* <ul className="pagination"> */}
         {pageNumbers.map((number) => (
-          <li key={number} className="pagin-list">
-            <a onClick={() => paginate(number)} href="#" className="pagin-link">
+          // <li key={number} className="pagin-list">
+            <a onClick={() => paginate(number)} href="#" className="pagin-link" >
               {number}
             </a>
-          </li>
+          // </li>
         ))}
-      </ul>
-    </nav>
+      {/* </ul> */}
+    </div>
   );
 };
 

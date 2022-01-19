@@ -24,15 +24,7 @@ const Header = ({ setIsopen, isopen, setProductSearch }) => {
           }}
         />
         {title ? (
-          <Link
-            type="button"
-            className="serach-btn"
-            to={`/search/${title}`}
-            // onClick={() => {
-            //   search();
-            //   navigate("/search");
-            // }}
-          >
+          <Link type="button" className="serach-btn" to={`/search/${title}`}>
             <button onClick={(e) => e.key == "enter"}>serach</button>
           </Link>
         ) : (
