@@ -34,7 +34,7 @@ const Update = ({ UpdateId, token }) => {
       });
   };
   return (
-    <div>
+    <div className="update">
       <label for="chk" aria-hidden="true">
         Update Product
       </label>

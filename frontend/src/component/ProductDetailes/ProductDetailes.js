@@ -179,8 +179,9 @@ const ProductDetailes = ({
                     }).then((result) => {
                       /* Read more about isConfirmed, isDenied below */
                       if (result.isConfirmed) {
-                        Swal.fire('Saved!', '', 'success')
                         deleteProducts(product._id);
+                        Swal.fire('Saved!', '', 'success')
+                       
 
                        navigate("/products");
                       } else if (result.isDenied) {

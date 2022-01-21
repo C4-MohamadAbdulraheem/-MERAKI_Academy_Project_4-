@@ -9,7 +9,13 @@
     background-color: #6d44b8;
   width: 100%;
   color: #e0dede;
+  border-top: 1px solid #e0dede;
+  height: 10vh;
 }
 .Categorylist{
     cursor: pointer;
+}
+.categ-link{ 
+    text-decoration:none;
+    color: #e0dede
 }

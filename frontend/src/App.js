@@ -31,7 +31,7 @@ function App() {
   //create pagination use states
   const [currentPage, setCurrentPage] = useState(1);
   //
-  const [productsPerPage, setProductsPerPage] = useState(5);
+  const [productsPerPage, setProductsPerPage] = useState(4);
   //logic for pagination
 
   const indexOfLastProduct = currentPage * productsPerPage;
@@ -68,6 +68,8 @@ function App() {
           path="/products"
           element={
             <Products
+            setCart={setCart}
+              cart={cart}
               getAllProducts={getAllProducts}
               resultpage={currentProducts}
               productsPerPage={productsPerPage}
@@ -81,7 +83,14 @@ function App() {
           path="/cart"
           element={<Cart cart={cart} setCart={setCart} />}
         ></Route>
-        <Route path="/category/:category" element={<ProductsByCategory />} />
+        <Route path="/category/:category" element={<ProductsByCategory setCart={setCart}
+              cart={cart}
+              getAllProducts={getAllProducts}
+              resultpage={currentProducts}
+              productsPerPage={productsPerPage}
+              totalProducts={result.length}
+              paginate={paginate}
+              setProductId={setProductId}/>} />
         <Route
           path="/productdetailes/:id"
           element={
