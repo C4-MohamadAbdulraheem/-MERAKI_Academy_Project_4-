@@ -31,23 +31,28 @@ const Products = ({
       return (
         <>
           <div
-            className="product"
+            className="productes"
             key={product._id}
             onClick={() => {
               setProductId(product._id);
             }}
           >
-            <div className="product-image">
+            <div >
               <Link to={`/productdetailes/${product._id}`}>
-                <img src={product.image} />
+                <img src={product.image} style={{height: '379.98px',width: '362.14'}}/>
               </Link>
             </div>
-            <div className="product-description">
-              <p>Title:{product.title}</p>
-              <p>Description:{product.description}</p>
-              <p>Price:{product.price}</p>
-              <p>Amount:{product.amount}</p>
+            <div className="productes-description">
+              <p>{product.title.substring(-1,20)+"..."}</p>
+              <p>{product.description.substring(-1,70)+"..."}</p>
+              <div className="productes-btn">
+              <Link to="#" >Show Product</Link>
+              <Link to="#">Add to Cart</Link>
+
+
             </div>
+            </div>
+            
           </div>
         </>
       );
@@ -55,7 +60,7 @@ const Products = ({
 
   return (
     <>
-      <div className="products">
+      <div className="all-products">
         {products ? products : <p>There is no products</p>}
       </div>
       <Pagination

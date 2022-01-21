@@ -16,6 +16,39 @@ const Category = ({ setProductCategory }) => {
       >
         | Mobiles |
       </Link>
+      <Link
+      to={`/category/mobiles`}
+        // onClick={() => {
+        //   // getProductByCategory(`mobiles`);
+        //   navigate("/category")
+        // }}
+        // className="Categorylist"
+      >
+        | TVs |
+      </Link>
+      <Link
+      to={`/category/mobiles`}
+        // onClick={() => {
+        //   // getProductByCategory(`mobiles`);
+        //   navigate("/category")
+        // }}
+        // className="Categorylist"
+      >
+        | Laptops |
+      </Link>
+      <Link
+      to={`/category/mobiles`}
+        // onClick={() => {
+        //   // getProductByCategory(`mobiles`);
+        //   navigate("/category")
+        // }}
+        // className="Categorylist"
+      >
+        | Mobiles |
+      </Link>
+
+
+
       <p className="Categorylist">| TVs |</p>
       <p className="Categorylist">| Laptops |</p>
       <p className="Categorylist">| Ipads |</p>

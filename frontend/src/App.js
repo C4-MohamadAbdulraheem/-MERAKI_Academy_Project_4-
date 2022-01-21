@@ -13,6 +13,7 @@ import axios from "axios";
 import "./App.css";
 import ProductsByCategory from "./component/productsByCategory/ProductsByCategory";
 import Search from "./component/Search/Search";
+import Home from "./component/Home/Home";
 function App() {
   //create a global state for token
   const [token, setToken] = useState("");
@@ -59,6 +60,8 @@ function App() {
       {isopen ? <Category /> : null}
 
       <Routes>
+      <Route path="/" element={<Home/>} />
+        
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login setToken={setToken} />} />
         <Route
@@ -105,7 +108,7 @@ function App() {
           }
         />
         <Route
-          path="/update"
+          path="/update/:id"
           element={<Update UpdateId={UpdateId} token={token} />}
         ></Route>
         <Route path="/create" element={<Create token={token} />}></Route>

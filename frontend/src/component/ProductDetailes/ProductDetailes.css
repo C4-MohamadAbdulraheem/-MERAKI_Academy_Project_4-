@@ -1,0 +1,230 @@
+.product-detailes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 50%;
+  padding: 3%;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3%
+}
+.product {
+  display: flex;
+  flex-direction: row;
+  width: 67%;
+  box-shadow: 1px 1px 1px 1px grey;
+  min-height: 50vh;
+  /* align-items: center; */
+}
+
+.product-image {
+  /* width: 33%; */
+}
+.product-description {
+  display: flex;
+  flex-direction: column;
+  width: 3fr;
+  justify-content: space-around;
+  align-items: center;
+  width: 66%;
+}
+.title {
+  font-size: 1.5em;
+}
+.product-description-1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.product-title-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: auto;
+  gap: 2vh;
+  border: 1px solid #ccc;
+}
+.delivery {
+}
+.title {
+}
+.add-to-product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.Write-qty {
+  display: flex;
+  flex-direction: row;
+
+  margin-right: 10px;
+  align-items: center;
+  /* gap: 15vh; */
+}
+.review {
+}
+
+/* CSS */
+.button-58 {
+  align-items: center;
+  background-color: #6d44b8;
+  border: 2px solid #6d44b8;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  fill: #000;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  height: 48px;
+  justify-content: center;
+  letter-spacing: -0.8px;
+  line-height: 24px;
+  min-width: 140px;
+  outline: 0;
+  padding: 0 17px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+/* .button-58:focus {
+  color: #171e29;
+} */
+
+.button-58:hover {
+  background-color: #8d5aec;
+  border-color: #8d5aec;
+  fill: #6d44b8;
+}
+
+.button-58:active {
+  background-color: #8d5aec;
+  border-color: #8d5aec;
+  fill: #6d44b8;
+}
+
+@media (min-width: 768px) {
+  .button-58 {
+    min-width: 170px;
+  }
+}
+.qty {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10%;
+}
+.product-description-2 {
+}
+.description {
+}
+.brief {
+}
+
+/* CSS */
+.button-55 {
+  align-self: center;
+  background-color: #fff;
+  background-image: none;
+  background-position: 0 90%;
+  background-repeat: repeat no-repeat;
+  background-size: 4px 3px;
+  border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: rgba(0, 0, 0, 0.2) 15px 28px 25px -18px;
+  box-sizing: border-box;
+  color: #41403e;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Neucha, sans-serif;
+  font-size: 1rem;
+  line-height: 23px;
+  outline: none;
+  padding: 0.75rem;
+  text-decoration: none;
+  transition: all 235ms ease-in-out;
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-55:hover {
+  box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px -5px;
+  transform: translate3d(0, 2px, 0);
+}
+
+.button-55:focus {
+  box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 4px -6px;
+}
+.Review {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* justify-content: space-between; */
+  border: 1px solid white;
+  border-radius: 10px;
+  width: 70%;
+  /* min-height: 30vh; */
+  padding: 1%;
+  background-color: #6d44b8;
+}
+.Reviewes {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  /* border: solid 1px gray; */
+  width: 65%;
+  min-height: 40vh;
+  padding: 1%;
+  box-shadow: 1px 1px 1px 1px grey;
+}
+.commenter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1%;
+}
+.comment {
+  /* background-color: grey; */
+  text-align: center;
+  /* border-radius: 10px; */
+  color: #fff;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.add-review {
+  display: flex;
+  flex-direction: column;
+  gap: 10%;
+  align-items: center ;
+  justify-content:center;
+  width: 50%;
+  height: 50vh;
+  padding: auto;
+}
+.admin-btn{
+  display: flex;
+  flex-direction: row;
+  gap: 3%;
+}

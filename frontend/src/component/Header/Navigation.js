@@ -4,6 +4,7 @@ import { useState } from "react";
 import Category from "../Category/Category";
 import "./Header.css";
 import Dropdown from "react-dropdown";
+
 const Navigation = ({ setIsopen, isopen }) => {
   const localToken = localStorage.getItem("token");
   const role = localToken && decode(localToken).role.role;

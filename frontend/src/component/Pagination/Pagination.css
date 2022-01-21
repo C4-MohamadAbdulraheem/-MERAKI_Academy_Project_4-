@@ -1,5 +1,9 @@
 .pagination {
-    display: inline-block;
+    /* display: inline-block; */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    
   }
   
   .pagination a {
@@ -13,3 +17,7 @@
       background-color: #6d44b8;
       color: #e0dede
   }
+  .pagination a:active {
+    background-color: #6d44b8;
+    color: #e0dede
+}

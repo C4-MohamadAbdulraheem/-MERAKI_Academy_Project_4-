@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import Swal from 'sweetalert2'
+
 import "./Update.css";
 
 const Update = ({ UpdateId, token }) => {
@@ -12,9 +14,11 @@ const Update = ({ UpdateId, token }) => {
   const [image, setImage] = useState("");
   const [message, setMessage] = useState("");
   const updateInfo = { title, description, price, ammount, image };
-  const updateId = JSON.parse(localStorage.getItem("product"))[0]._id;
-  console.log(updateId);
-  console.log(image);
+  const navigate = useNavigate();
+  // const updateId = JSON.parse(localStorage.getItem("product"))[0]._id;
+  // console.log(updateId);
+  // console.log(image);
+  const { id } = useParams();
   const updateProduct = (id) => {
     axios
       .put(`http://localhost:5000/product/update/${id}`, updateInfo, {
@@ -84,7 +88,25 @@ const Update = ({ UpdateId, token }) => {
       <button
         className="update-btn"
         onClick={() => {
-          updateProduct(updateId);
+          Swal.fire({
+            title: 'Do you want to save the changes?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Save',
+            denyButtonText: `Don't save`,
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+              updateProduct(id)
+              navigate(`/productdetailes/${id}`)
+              Swal.fire('Saved!', '', 'success')
+              
+              
+            } else if (result.isDenied) {
+              Swal.fire('Changes are not saved', '', 'info')
+            }
+          })
+          // updateProduct(id);
         }}
       >
         Update
