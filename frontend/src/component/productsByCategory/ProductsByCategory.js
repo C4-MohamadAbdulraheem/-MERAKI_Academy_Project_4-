@@ -55,7 +55,7 @@ const ProductsByCategory = ({
 
   useEffect(() => {
     getProductByCategory(category);
-  }, []);
+  }, [category]);
   console.log(currentProducts);
   const products =
     currentProducts.length &&

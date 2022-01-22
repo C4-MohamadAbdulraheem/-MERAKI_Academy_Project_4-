@@ -5,6 +5,13 @@ import decode from "jwt-decode";
 import axios from "axios";
 import Swal from 'sweetalert2'
 import { plus, minus } from "react-icons/fa";
+import{AiOutlineShoppingCart}from "react-icons/ai"
+import{MdUpdate,MdOutlineSystemUpdateAlt,MdRateReview}from "react-icons/md"
+
+import{RiDeleteBin6Line}from "react-icons/ri"
+
+
+
 const ProductDetailes = ({
   setCart,
   cart,
@@ -132,6 +139,8 @@ const ProductDetailes = ({
                 </div>
                 <button
                   className="button-58"
+                  style={{gap:"3%"}}
+                
                   onClick={(e) => {
                     setCart([...cart, { ...product, number: counter }]);
                     console.log(cart);
@@ -145,30 +154,35 @@ const ProductDetailes = ({
                     );
                   }}
                 >
-                  Add to Cart
+                  Add to Cart <AiOutlineShoppingCart/>
                 </button>
               </div>
-              <Link to="#" onClick={(e) => {
+              <Link to="#"
+              style={{align:"center", gap: "3%",alignItems:"center"}}
+               onClick={(e) => {
+                
                 if (localToken) {
                   setIsClicked(!isClicked)
                 }else{setreviewMessage("Login to show reviwes")}
-                 }}>show reviews</Link>
+                 }}><MdRateReview/> show reviews </Link>
               {localToken?null:<Link to="/login">{reviewMessage}</Link>}
 
               {role === "ADMIN" ? (
               <div className="admin-btn">
                 <button
+                style={{gap:"3%"}}
                 className="button-58"
                   onClick={() => {
                     setUpdateId(product._id);
                     navigate(`/update/${product._id}`);
                   }}
                 >
-                  Update
+                  Update <MdOutlineSystemUpdateAlt/>
                 </button>
 
                 <button
                 className="button-58"
+                style={{gap:"3%"}}
                   onClick={(e) => {
                     let confirmMessage = Swal.fire({
                       title: "Are you sure to delete product?",
@@ -196,7 +210,7 @@ const ProductDetailes = ({
                     // }
                   }}
                 >
-                  Delete
+                  Delete <RiDeleteBin6Line/>
                 </button>
                 <p>{message}</p>
               </div>
@@ -284,7 +298,7 @@ const ProductDetailes = ({
           </div>
           {isClicked&&localToken?<div className="Reviewes">
             <div className="comment">
-              <span style={{ color: "black" }}>Reviewes</span>
+              <span style={{ color: "black" ,gap:"3%",display:"flex",alignItems:"center" }}> <MdRateReview/> Reviewes</span>
               {product.comment.length ? (
                 product.comment.map((comment) => {
                   return (

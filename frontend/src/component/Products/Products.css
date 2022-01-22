@@ -7,20 +7,25 @@
   /* justify-content: space-between; */
   align-items: center;
   justify-content: space-around;
+  margin-left: 6%;
+  padding-top:1%;
+  padding-bottom:1%
+
 }
 .productes {
   display: flex;
   flex-direction: row;
   width: 40%;
   /* height: 40vh; */
-  gap: 1%;
-  margin: 0.25%;
+  gap: 2%;
+  /* margin: 0.25%; */
   align-items: flex-start;
   padding: 10px;
   box-shadow: 1px 1px 1px 1px grey;
-
+  /* margin: 4px -5px; */
   /* justify-content: center; */
   border: solid rgb(223, 215, 215) 1px;
+  
 
 }
 .productes-description{
@@ -64,5 +69,5 @@
 
 }
 .productes:hover{
- transform: scale(1.008);
+ transform: scale(0.995);
 }

@@ -26,6 +26,8 @@ const login = (req, res) => {
       console.log(result);
       const payLoad = {
         userId: result._id,
+        firstName:result.firstName,
+        lastName:result.lastName,
         country: result.country,
         role: result.role,
       };

@@ -14,6 +14,7 @@ import "./App.css";
 import ProductsByCategory from "./component/productsByCategory/ProductsByCategory";
 import Search from "./component/Search/Search";
 import Home from "./component/Home/Home";
+import CardPayment from "./component/CardPayment/CardPayment"
 function App() {
   //create a global state for token
   const [token, setToken] = useState("");
@@ -81,7 +82,7 @@ function App() {
         />
         <Route
           path="/cart"
-          element={<Cart cart={cart} setCart={setCart} />}
+          element={<Cart cart={cart} setCart={setCart} setProductId={setProductId} />}
         ></Route>
         <Route path="/category/:category" element={<ProductsByCategory setCart={setCart}
               cart={cart}
@@ -121,6 +122,7 @@ function App() {
           element={<Update UpdateId={UpdateId} token={token} />}
         ></Route>
         <Route path="/create" element={<Create token={token} />}></Route>
+        <Route path="/order" element={<CardPayment token={token}/>}/>
       </Routes>
     </div>
   );

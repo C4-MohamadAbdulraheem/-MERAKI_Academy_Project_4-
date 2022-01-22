@@ -8,9 +8,11 @@ const Create = () => {
   const [price, setPrice] = useState("");
   const [ammount, setAmmount] = useState("");
   const [image, setImage] = useState("");
+  const [category, setCategory] = useState("");
+
   const [message, setMessage] = useState("");
 
-  const createInfo = { title, description, price, ammount, image };
+  const createInfo = { title, description, price, ammount, image,category };
   console.log(createInfo);
   const createProduct = () => {
     axios
@@ -52,6 +54,15 @@ const Create = () => {
       <br />
       <input
         className="update-inp"
+        placeholder="category"
+        type="text"
+        onChange={(e) => {
+          setCategory(e.target.value);
+        }}
+      ></input>
+      <br />
+      <input
+        className="update-inp"
         placeholder="Price"
         type="text"
         onChange={(e) => {
@@ -70,9 +81,12 @@ const Create = () => {
       <br />
       <input
         className="update-inp"
-        type="file"
+        placeholder="image"
+
+        type="text"
         onChange={(e) => {
-          setImage(URL.createObjectURL(e.target.files[0]));
+          setImage(e.target.value)
+          // setImage(URL.createObjectURL(e.target.files[0]));
         }}
       ></input>
       {/* <input placeholder="Title" type="text"></input>

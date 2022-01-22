@@ -55,7 +55,8 @@ const Login = ({ setToken }) => {
         onChange={changePassword}
       />
       <br />
-      <p onClick={()=>{
+      <p style={{display: 'flex',justifyContent: 'center',cursor: 'pointer'}}
+      onClick={()=>{
         navigate("/register");
       }}>create an account</p>
       <br/>

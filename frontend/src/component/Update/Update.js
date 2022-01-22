@@ -13,7 +13,9 @@ const Update = ({ UpdateId, token }) => {
   const [ammount, setAmmount] = useState("");
   const [image, setImage] = useState("");
   const [message, setMessage] = useState("");
-  const updateInfo = { title, description, price, ammount, image };
+  const [category, setCategory] = useState("");
+
+  const updateInfo = { title, description, price, ammount, image ,category};
   const navigate = useNavigate();
   // const updateId = JSON.parse(localStorage.getItem("product"))[0]._id;
   // console.log(updateId);
@@ -59,6 +61,15 @@ const Update = ({ UpdateId, token }) => {
       <br />
       <input
         className="update-inp"
+        placeholder="category"
+        type="text"
+        onChange={(e) => {
+          setCategory(e.target.value);
+        }}
+      ></input>
+      <br />
+      <input
+        className="update-inp"
         placeholder="Price"
         type="text"
         onChange={(e) => {
@@ -76,10 +87,12 @@ const Update = ({ UpdateId, token }) => {
       ></input>
       <br />
       <input
+      placeholder="Iamge"
         className="update-inp"
-        type="file"
+        type="text"
         onChange={(e) => {
-          setImage(URL.createObjectURL(e.target.files[0]));
+          setImage(e.target.value)
+          // setImage(URL.createObjectURL(e.target.files[0]));
         }}
       ></input>
       {/* <input placeholder="Title" type="text"></input>
