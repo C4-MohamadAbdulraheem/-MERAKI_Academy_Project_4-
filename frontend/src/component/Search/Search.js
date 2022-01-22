@@ -5,8 +5,14 @@ import { useState, useEffect } from "react";
 import Pagination from "../Pagination/Pagination";
 
 import { useNavigate,useParams ,Link} from "react-router-dom";
+import { BiShowAlt } from "react-icons/bi";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
-const Search = ({ setProductDetailes }) => {
+
+const Search = ({ setProductDetailes ,setCart,
+  cart,
+  totalProducts,
+  setProductId, }) => {
   const [productSearch, setProductSearch] = useState([]);
 //create pagination use states
 const [currentPage, setCurrentPage] = useState(1);
@@ -47,49 +53,60 @@ const {title} =useParams()
   currentProducts.length &&
   currentProducts.map((product) => {
       return (
+        <>
         <div
-          className="product"
+          className="productes"
           key={product._id}
-          // onClick={() => {
-          //   setProductDetailes([product]);
-          //   localStorage.setItem("product", JSON.stringify([product]));
-          //   Navigate("/productdetailes");
-          // }}
+          onClick={() => {
+            setProductId(product._id);
+          }}
         >
-          <div className="product-image">
-          <Link to={`/productdetailes/${product._id}`}>
-                <img src={product.image} />
-              </Link>
+          <div>
+            <Link to={`/productdetailes/${product._id}`}>
+              <img
+                src={product.image}
+                style={{ height: "340.98px", width: "362.14" }}
+              />
+            </Link>
           </div>
-          <div className="product-description">
-            <p>Title:{product.title}</p>
-            <p>Description:{product.description}</p>
-            <p>Price:{product.price}</p>
-            <p>Amount:{product.amount}</p>
-            {/* <button
-              onClick={(e) => {
-                setCart([...cart, product]);
-              }}
-            >
-              add to cart
-            </button>
-            <button
-              onClick={() => {
-                setCounter(counter + 1);
-              }}
-            >
-              +
-            </button>
-            <p>{counter}</p>
-            <button
-              onClick={() => {
-                setCounter(counter - 1);
-              }}
-            >
-              -
-            </button> */}
+          <div className="productes-description">
+            <span className="title">
+              {product.title.substring(-1, 30) + "..."}
+            </span>
+            <p>{product.description.substring(-1, 70) + "..."}</p>
+            <span className="price">Price : {product.price} J.D</span>
+            <div className="productes-btn">
+              <Link
+                to={`/productdetailes/${product._id}`}
+                style={{
+                  borderRight: "1px solid rgb(211, 206, 206)",
+                  paddingLeft: "10%",
+                }}
+              >
+                <BiShowAlt /> Show Product
+              </Link>
+              <Link
+                to="#"
+                onClick={(e) => {
+                  setCart([...cart, { ...product, number: "1" }]);
+                  console.log(cart);
+                  if (localStorage.getItem("productCart") == null) {
+                    localStorage.setItem("productCart", []);
+                  }
+
+                  localStorage.setItem(
+                    "productCart",
+                    JSON.stringify([...cart, { ...product, number: "1" }])
+                  );
+                }}
+              >
+                {" "}
+                <AiOutlineShoppingCart /> Add to Cart
+              </Link>
+            </div>
           </div>
         </div>
+      </>
       );
     });
 

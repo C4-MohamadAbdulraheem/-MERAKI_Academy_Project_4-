@@ -6,7 +6,7 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    background-color: #6d44b8;
+    background-color: #DBD0F2;
   width: 100%;
   color: #e0dede;
   border-top: 1px solid #e0dede;
@@ -17,5 +17,5 @@
 }
 .categ-link{ 
     text-decoration:none;
-    color: #e0dede
+    color: #6d44b8
 }

@@ -31,7 +31,7 @@
   flex-direction: column;
   width: 3fr;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
   width: 66%;
 }
 .title {
@@ -56,9 +56,9 @@
 }
 .add-to-product {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 5px;
+  gap: 20%;
 }
 .Write-qty {
   display: flex;
@@ -227,4 +227,11 @@
   display: flex;
   flex-direction: row;
   gap: 3%;
+}
+.cat-amm{
+  display: flex;
+  flex-direction: row;
+  gap: 30%;
+  width: 100%;
+  /* justify-content: space-around; */
 }

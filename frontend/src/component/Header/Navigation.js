@@ -26,7 +26,7 @@ const Navigation = ({ setIsopen, isopen }) => {
       <div className="nav-1">
 
       
-      <Link to="#" className="link"> <AiFillHome/> Home</Link>
+      <Link to="/" className="link"> <AiFillHome/> Home</Link>
       <Link to="/products" className="link">
         <AiFillAppstore/> Products
       </Link>

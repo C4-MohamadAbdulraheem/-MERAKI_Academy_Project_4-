@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import {BiShowAlt}from "react-icons/bi"
 import{AiOutlineShoppingCart}from "react-icons/ai"
 import {BsCartX}from "react-icons/bs"
+import {BsFillBagFill} from "react-icons/bs"
 
 const Cart = ({ cart, setCart ,setProductId}) => {
   const navigate = useNavigate()
@@ -61,8 +62,10 @@ const Cart = ({ cart, setCart ,setProductId}) => {
     <div className="all-products">
       {products ? products : <p>There is no products</p>}
     </div>
-    {productCart.length?<button onClick={() => navigate("/order")}
-    className="button-58" style={{width: ""}}>Order</button>:null}
+    {productCart&&productCart.length?<button 
+    style={{display: 'flex', alignItems: 'center' ,justifyContent: 'spacebetween'}}
+    onClick={() => navigate("/order")}
+    className="button-58" style={{width: ""}}><BsFillBagFill/>  Order Now</button>:null}
     </div>
   );
 };

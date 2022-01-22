@@ -5,6 +5,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import decode from "jwt-decode";
+import {BsBag} from "react-icons/bs"
 
 const Header = ({ setIsopen, isopen, setProductSearch }) => {
   const [title, setTitle] = useState("");
@@ -15,8 +16,8 @@ const Header = ({ setIsopen, isopen, setProductSearch }) => {
   return (
     <div className="main-header">
       <div className="header">
-        <header>
-          <h1>E-commerce</h1>
+        <header >
+          <h1 style={{ color:"white",display:"flex" ,alignItems: "center" ,height: "100%"}}><span><BsBag/></span>store<span style={{color:"#DBD0F2"}}>Book</span></h1>
         </header>
         <div className="search">
           <input
@@ -25,18 +26,18 @@ const Header = ({ setIsopen, isopen, setProductSearch }) => {
             className="serach-inp"
             onChange={(e) => {
               setTitle(e.target.value);
-              e.key = "enter";
+              ;
             }}
           />
           {title ? (
-            <Link type="button" className="serach-btn" to={`/search/${title}`}>
+          <Link to={`/search/${title}`}>  <button type="button" className="serach-btn" >
               <BsSearch
-                className="serach-btn"
-                onClick={(e) => e.key == "enter"}
+              
+                
               />
-            </Link>
+            </button></Link> 
           ) : (
-            <BsSearch />
+            <button className="serach-btn"><BsSearch /></button>
           )}
         </div>
         {localToken?<span style={{display: 'flex',alignItems: 'center' ,gap:"2%" ,width:"15%"}}>

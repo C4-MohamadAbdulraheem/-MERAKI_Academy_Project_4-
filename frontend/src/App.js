@@ -114,6 +114,14 @@ function App() {
               getAllProducts={getAllProducts}
               setResult={setResult}
               result={result}
+              setCart={setCart}
+              cart={cart}
+              getAllProducts={getAllProducts}
+              resultpage={currentProducts}
+              productsPerPage={productsPerPage}
+              totalProducts={result.length}
+              paginate={paginate}
+              setProductId={setProductId}
             />
           }
         />

@@ -108,15 +108,17 @@ const ProductDetailes = ({
 
               <span className="title">{product.title}</span>
               <span className="description">
-                |Description : {product.description}{" "}
+                | Description : {product.description}{" "}
               </span>
+              <div className="cat-amm">
               <span className="category">
-                |Category : {product.category || "mobile phone"}
+                | Category : {product.category || "mobile phone"}
               </span>
-              <span className="amount">
-                |Available Ammount : {product.amount || 10}
+              <span className="amount" >
+                | Available Ammount : {product.ammount || 10}
               </span>
-
+              </div>
+              <span className="price">| Price : {product.price} J.D</span>
               <div className="add-to-product">
                 <div className="qty">
                   <button
