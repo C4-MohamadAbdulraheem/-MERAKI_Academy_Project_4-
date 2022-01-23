@@ -23,7 +23,7 @@ const Update = ({ UpdateId, token }) => {
   const { id } = useParams();
   const updateProduct = (id) => {
     axios
-      .put(`http://localhost:5000/product/update/${id}`, updateInfo, {
+      .patch(`http://localhost:5000/product/update/${id}`, updateInfo, {
         headers: {
           Authorization: `Basic ${locaToken}`,
         },

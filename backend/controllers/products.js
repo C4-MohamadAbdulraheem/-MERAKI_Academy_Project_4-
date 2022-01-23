@@ -132,7 +132,7 @@ const updateProductById = (req, res) => {
     .findByIdAndUpdate(
       productId,
       { title, description, price, comment, relaeaseAt },
-      { new: true }
+      {new: true}
     )
 
     .then((updatedProduct) => {

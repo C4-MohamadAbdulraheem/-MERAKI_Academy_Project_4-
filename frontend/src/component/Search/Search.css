@@ -1,0 +1,21 @@
+/* .productes{
+    padding:1%
+} */
+
+.productes-search {
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+    /* height: 40vh; */
+    gap: 2%;
+    /* margin: 0.25%; */
+    align-items: flex-start;
+    padding: 10px;
+    box-shadow: 1px 1px 1px 1px grey;
+    /* margin: 4px -5px; */
+    /* justify-content: center; */
+    border: solid rgb(223, 215, 215) 1px;
+    padding:1%
+    
+  
+  }

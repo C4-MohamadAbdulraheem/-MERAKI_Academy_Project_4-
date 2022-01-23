@@ -12,17 +12,18 @@ const Pagination = ({ productsPerPage, totalProducts, paginate }) => {
   console.log(totalProducts);
   return (
     <div className="pagination">
-      {/* <ul className="pagination"> */}
+   
         {pageNumbers.map((number) => (
-          // <li key={number} className="pagin-list">
-            <a onClick={() => paginate(number)} href="#" className="pagin-link" >
+       
+           <a onClick={() => paginate(number)} href="#" className="pagin-link" >
               {number}
             </a>
-          // </li>
+            
+          
         ))}
-      {/* </ul> */}
+      
     </div>
-  );
+  )
 };
 
 export default Pagination;

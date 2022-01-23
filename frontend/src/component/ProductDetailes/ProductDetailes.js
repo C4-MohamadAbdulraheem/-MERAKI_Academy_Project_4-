@@ -124,7 +124,7 @@ const ProductDetailes = ({
               </div>
               <span className="price">| Price : {product.price} J.D</span>
               <div className="add-to-product">
-                <div className="qty">
+                {localToken?<div className="qty">
                   <button
                     className="button-55"
                     onClick={() => {
@@ -142,8 +142,8 @@ const ProductDetailes = ({
                   >
                     -{" "}
                   </button>
-                </div>
-                <button
+                </div>:null}
+                {localToken?<button
                   className="button-58"
                   style={{ gap: "3%" }}
                   onClick={(e) => {
@@ -160,7 +160,7 @@ const ProductDetailes = ({
                   }}
                 >
                   Add to Cart <AiOutlineShoppingCart />
-                </button>
+                </button>:null}
               </div>
               <Link
                 to="#"

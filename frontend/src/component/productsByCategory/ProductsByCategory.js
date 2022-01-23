@@ -59,7 +59,7 @@ const ProductsByCategory = ({
 
   useEffect(() => {
     getProductByCategory(category);
-  }, [productCategory,error]);
+  }, [category]);
   console.log(currentProducts);
   const products =
     currentProducts.length &&
@@ -129,7 +129,7 @@ const ProductsByCategory = ({
       </div>
       <Pagination
         productsPerPage={productsPerPage}
-        totalProducts={productsPerPage.length}
+        totalProducts={productCategory.length}
         paginate={paginate}
       />
     </>

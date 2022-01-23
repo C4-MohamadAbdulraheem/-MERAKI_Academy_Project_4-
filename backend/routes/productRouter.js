@@ -31,7 +31,7 @@ productRouter.delete(
 );
 
 //create  endpoint to update product by id
-productRouter.put(
+productRouter.patch(
   "/update/:id",
   authentication,
   authorization("Update_Product_ById"),
