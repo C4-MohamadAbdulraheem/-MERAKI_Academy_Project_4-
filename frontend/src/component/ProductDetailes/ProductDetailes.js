@@ -3,14 +3,16 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import decode from "jwt-decode";
 import axios from "axios";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 import { plus, minus } from "react-icons/fa";
-import{AiOutlineShoppingCart}from "react-icons/ai"
-import{MdUpdate,MdOutlineSystemUpdateAlt,MdRateReview}from "react-icons/md"
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import {
+  MdUpdate,
+  MdOutlineSystemUpdateAlt,
+  MdRateReview,
+} from "react-icons/md";
 
-import{RiDeleteBin6Line}from "react-icons/ri"
-
-
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const ProductDetailes = ({
   setCart,
@@ -31,7 +33,9 @@ const ProductDetailes = ({
 
   const [comments, setComments] = useState([]);
   const [reviewMessage, setreviewMessage] = useState("");
-  const role = localToken && decode(localToken).role.role;
+  const role =
+    localToken && decode(localToken).role && decode(localToken).role.role;
+
   console.log(role);
   const { id } = useParams();
 
@@ -111,12 +115,12 @@ const ProductDetailes = ({
                 | Description : {product.description}{" "}
               </span>
               <div className="cat-amm">
-              <span className="category">
-                | Category : {product.category || "mobile phone"}
-              </span>
-              <span className="amount" >
-                | Available Ammount : {product.ammount || 10}
-              </span>
+                <span className="category">
+                  | Category : {product.category || "mobile phone"}
+                </span>
+                <span className="amount">
+                  | Available Ammount : {product.ammount || 10}
+                </span>
               </div>
               <span className="price">| Price : {product.price} J.D</span>
               <div className="add-to-product">
@@ -141,8 +145,7 @@ const ProductDetailes = ({
                 </div>
                 <button
                   className="button-58"
-                  style={{gap:"3%"}}
-                
+                  style={{ gap: "3%" }}
                   onClick={(e) => {
                     setCart([...cart, { ...product, number: counter }]);
                     console.log(cart);
@@ -156,69 +159,71 @@ const ProductDetailes = ({
                     );
                   }}
                 >
-                  Add to Cart <AiOutlineShoppingCart/>
+                  Add to Cart <AiOutlineShoppingCart />
                 </button>
               </div>
-              <Link to="#"
-              style={{align:"center", gap: "3%",alignItems:"center"}}
-               onClick={(e) => {
-                
-                if (localToken) {
-                  setIsClicked(!isClicked)
-                }else{setreviewMessage("Login to show reviwes")}
-                 }}><MdRateReview/> show reviews </Link>
-              {localToken?null:<Link to="/login">{reviewMessage}</Link>}
+              <Link
+                to="#"
+                style={{ align: "center", gap: "3%", alignItems: "center" }}
+                onClick={(e) => {
+                  if (localToken) {
+                    setIsClicked(!isClicked);
+                  } else {
+                    setreviewMessage("Login to show reviwes");
+                  }
+                }}
+              >
+                <MdRateReview /> show reviews{" "}
+              </Link>
+              {localToken ? null : <Link to="/login">{reviewMessage}</Link>}
 
               {role === "ADMIN" ? (
-              <div className="admin-btn">
-                <button
-                style={{gap:"3%"}}
-                className="button-58"
-                  onClick={() => {
-                    setUpdateId(product._id);
-                    navigate(`/update/${product._id}`);
-                  }}
-                >
-                  Update <MdOutlineSystemUpdateAlt/>
-                </button>
+                <div className="admin-btn">
+                  <button
+                    style={{ gap: "3%" }}
+                    className="button-58"
+                    onClick={() => {
+                      setUpdateId(product._id);
+                      navigate(`/update/${product._id}`);
+                    }}
+                  >
+                    Update <MdOutlineSystemUpdateAlt />
+                  </button>
 
-                <button
-                className="button-58"
-                style={{gap:"3%"}}
-                  onClick={(e) => {
-                    let confirmMessage = Swal.fire({
-                      title: "Are you sure to delete product?",
-                      showDenyButton: true,
-                      showCancelButton: true,
-                      confirmButtonText: 'Delete',
-                      denyButtonText: `Don't Delete`,
-                    }).then((result) => {
-                      /* Read more about isConfirmed, isDenied below */
-                      if (result.isConfirmed) {
-                        deleteProducts(product._id);
-                        Swal.fire('Saved!', '', 'success')
-                       
+                  <button
+                    className="button-58"
+                    style={{ gap: "3%" }}
+                    onClick={(e) => {
+                      let confirmMessage = Swal.fire({
+                        title: "Are you sure to delete product?",
+                        showDenyButton: true,
+                        showCancelButton: true,
+                        confirmButtonText: "Delete",
+                        denyButtonText: `Don't Delete`,
+                      }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                          deleteProducts(product._id);
+                          Swal.fire("Saved!", "", "success");
 
-                       navigate("/products");
-                      } else if (result.isDenied) {
-                        Swal.fire('Changes are not saved', '', 'info')
-                      }
-                    })
-                  
-                    // if (confirmMessage) {
-                    //   deleteProducts(product._id);
+                          navigate("/products");
+                        } else if (result.isDenied) {
+                          Swal.fire("Changes are not saved", "", "info");
+                        }
+                      });
 
-                    //   navigate("/products");
-                    // }
-                  }}
-                >
-                  Delete <RiDeleteBin6Line/>
-                </button>
-                <p>{message}</p>
-              </div>
-            ) : null}
+                      // if (confirmMessage) {
+                      //   deleteProducts(product._id);
 
-
+                      //   navigate("/products");
+                      // }
+                    }}
+                  >
+                    Delete <RiDeleteBin6Line />
+                  </button>
+                  <p>{message}</p>
+                </div>
+              ) : null}
 
               {/*////////////////////////////////*/}
               {/* <span className="review">WRITE A REVIEW</span>
@@ -298,40 +303,65 @@ const ProductDetailes = ({
               </div>
             </div>
           </div>
-          {isClicked&&localToken?<div className="Reviewes">
-            <div className="comment">
-              <span style={{ color: "black" ,gap:"3%",display:"flex",alignItems:"center" }}> <MdRateReview/> Reviewes</span>
-              {product.comment.length ? (
-                product.comment.map((comment) => {
-                  return (
-                    <div className="Review">
-                      <div className="commenter">
-                        <img
-                          src="https://www.pngrepo.com/png/384670/512/account-avatar-profile-user.png"
-                          style={{ width: "5%", height: "5%" }}
-                        />
-                        {comment.commenter &&
-                          comment.commenter.firstName +
-                            " " +
-                            comment.commenter.lastName}
+          {isClicked && localToken ? (
+            <div className="Reviewes">
+              <div className="comment">
+                <span
+                  style={{
+                    color: "black",
+                    gap: "3%",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  {" "}
+                  <MdRateReview /> Reviewes
+                </span>
+                {product.comment.length ? (
+                  product.comment.map((comment) => {
+                    return (
+                      <div className="Review">
+                        <div className="commenter">
+                          <img
+                            src="https://www.pngrepo.com/png/384670/512/account-avatar-profile-user.png"
+                            style={{ width: "5%", height: "5%" }}
+                          />
+                          {comment.commenter &&
+                            comment.commenter.firstName +
+                              " " +
+                              comment.commenter.lastName}
+                        </div>
+                        <p className="comment" style={{ width: "100%" }}>
+                          {comment.comment}
+                        </p>
                       </div>
-                      <p className="comment" style={{ width: "100%" }}>
-                        {comment.comment}
-                      </p>
-                    </div>
-                  );
-                })
-              ) : (
-                <p>There aren't Reviewes on product</p>
-              )}
+                    );
+                  })
+                ) : (
+                  <p>There aren't Reviewes on product</p>
+                )}
+              </div>
+              <div className="add-review">
+                <textarea
+                  type="textarea"
+                  placeholder="write your review"
+                  rows="18"
+                  cols="50"
+                  onChange={(e) => {
+                    setComment(e.target.value);
+                  }}
+                />
+                <button
+                  className="button-58"
+                  onClick={(e) =>
+                    localToken ? createComment(product._id) : null
+                  }
+                >
+                  Post Review
+                </button>
+              </div>
             </div>
-            <div className="add-review">
-              <textarea type="textarea" placeholder="write your review" rows="18" cols="50"  onChange={(e) => {
-                   setComment(e.target.value);
-                 }}/>
-              <button className="button-58" onClick={(e) =>localToken?createComment(product._id):null}>Post Review</button>
-            </div>
-          </div>:null}
+          ) : null}
         </div>
 
         // <div className="product" key={product._id}>

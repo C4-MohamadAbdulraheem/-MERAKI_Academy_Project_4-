@@ -62,6 +62,7 @@ const Cart = ({ cart, setCart ,setProductId}) => {
     <div className="all-products">
       {products ? products : <p>There is no products</p>}
     </div>
+    <p>Total : 1200 J.D</p>
     {productCart&&productCart.length?<button 
     style={{display: 'flex', alignItems: 'center' ,justifyContent: 'spacebetween'}}
     onClick={() => navigate("/order")}

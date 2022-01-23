@@ -12,12 +12,16 @@ import {MdLogin,MdLogout} from "react-icons/md"
 import {RiLoginBoxFill} from "react-icons/ri"
 const Navigation = ({ setIsopen, isopen }) => {
   const localToken = localStorage.getItem("token");
-  const role = localToken && decode(localToken).role.role;
-  const firstName = localToken && decode(localToken).firstName;
-
+  const role = localToken &&decode(localToken).role &&decode(localToken).role.role;
+  const firstName = localToken && decode(localToken).firstName 
+  const firstName2 = localToken && decode(localToken).given_name
+  const lastName2 = localToken && decode(localToken).family_name
+  const googleLogin = localToken &&decode(localToken)
+  console.log(googleLogin);
+  
   // const firstName = decode(localToken).firstName;
   // console.log(firstName);
-  console.log(firstName);
+  console.log(lastName2);
   console.log(isopen);
   //////////////////////////
 
@@ -67,7 +71,7 @@ const Navigation = ({ setIsopen, isopen }) => {
       </Link> */}
       
 
-      {role ? (
+      {localToken ? (
         <Link
           className="link"
           to="/login"

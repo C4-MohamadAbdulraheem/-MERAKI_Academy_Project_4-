@@ -11,8 +11,13 @@ const Header = ({ setIsopen, isopen, setProductSearch }) => {
   const [title, setTitle] = useState("");
   const navigate = useNavigate();
   const localToken = localStorage.getItem("token");
-  const firstName = localToken && decode(localToken).firstName;
   const lastName = localToken && decode(localToken).lastName;
+  const firstName = localToken && decode(localToken).firstName 
+  const firstName2 = localToken && decode(localToken).given_name
+  const lastName2 = localToken && decode(localToken).family_name
+  console.log(lastName2);
+  console.log(firstName2);
+
   return (
     <div className="main-header">
       <div className="header">
@@ -44,7 +49,7 @@ const Header = ({ setIsopen, isopen, setProductSearch }) => {
           <img
             src="https://www.pngrepo.com/png/384670/512/account-avatar-profile-user.png"
             style={{ width: "10%", height: "10%" }}
-          /> {firstName + " "+lastName}
+          /> <p>{firstName?firstName:firstName2 }</p> <p>{lastName?lastName:lastName2}</p>
         </span>:null}
       </div>
 
