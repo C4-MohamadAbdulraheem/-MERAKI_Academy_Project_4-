@@ -104,7 +104,9 @@ const Register = () => {
       ></input>
       <br />
 
-      <button className="login-btn" onClick={register}>Register</button>
+      <button className="login-btn" onClick={register}>
+        Register
+      </button>
       <p>{massege}</p>
     </div>
   );

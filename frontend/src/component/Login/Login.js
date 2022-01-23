@@ -76,11 +76,9 @@ const Login = ({ setToken }) => {
       <div className="google-login">
         <GoogleLogin
           style={{
-            
             width: "100%",
             height: "100%",
             justifyContent: "center",
-            
           }}
           clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
           buttonText="Login With Google"

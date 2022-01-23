@@ -1,21 +1,21 @@
 /* li{
     color:black
 } */
-.Category{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #DBD0F2;
+.Category {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #dbd0f2;
   width: 100%;
   color: #e0dede;
   border-top: 1px solid #e0dede;
   height: 10vh;
 }
-.Categorylist{
-    cursor: pointer;
+.Categorylist {
+  cursor: pointer;
 }
-.categ-link{ 
-    text-decoration:none;
-    color: #6d44b8
+.categ-link {
+  text-decoration: none;
+  color: #6d44b8;
 }

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 import "./Update.css";
 
@@ -15,7 +15,7 @@ const Update = ({ UpdateId, token }) => {
   const [message, setMessage] = useState("");
   const [category, setCategory] = useState("");
 
-  const updateInfo = { title, description, price, ammount, image ,category};
+  const updateInfo = { title, description, price, ammount, image, category };
   const navigate = useNavigate();
   // const updateId = JSON.parse(localStorage.getItem("product"))[0]._id;
   // console.log(updateId);
@@ -87,11 +87,11 @@ const Update = ({ UpdateId, token }) => {
       ></input>
       <br />
       <input
-      placeholder="Iamge"
+        placeholder="Iamge"
         className="update-inp"
         type="text"
         onChange={(e) => {
-          setImage(e.target.value)
+          setImage(e.target.value);
           // setImage(URL.createObjectURL(e.target.files[0]));
         }}
       ></input>
@@ -102,23 +102,21 @@ const Update = ({ UpdateId, token }) => {
         className="update-btn"
         onClick={() => {
           Swal.fire({
-            title: 'Do you want to save the changes?',
+            title: "Do you want to save the changes?",
             showDenyButton: true,
             showCancelButton: true,
-            confirmButtonText: 'Save',
+            confirmButtonText: "Save",
             denyButtonText: `Don't save`,
           }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-              updateProduct(id)
-              navigate(`/productdetailes/${id}`)
-              Swal.fire('Saved!', '', 'success')
-              
-              
+              updateProduct(id);
+              navigate(`/productdetailes/${id}`);
+              Swal.fire("Saved!", "", "success");
             } else if (result.isDenied) {
-              Swal.fire('Changes are not saved', '', 'info')
+              Swal.fire("Changes are not saved", "", "info");
             }
-          })
+          });
           // updateProduct(id);
         }}
       >

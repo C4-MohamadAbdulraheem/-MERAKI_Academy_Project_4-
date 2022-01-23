@@ -1,31 +1,27 @@
-.home{
-    
-    background-image: url("https://thumbs.dreamstime.com/b/m-commerce-illustration-people-shopping-m-commerce-concept-people-shopping-smartphone-online-mobile-shopping-scene-132620399.jpg");
-    background-position: center;
+.home {
+  background-image: url("https://thumbs.dreamstime.com/b/m-commerce-illustration-people-shopping-m-commerce-concept-people-shopping-smartphone-online-mobile-shopping-scene-132620399.jpg");
+  background-position: center;
   background-repeat: no-repeat;
   /* background-size: cover; */
-    min-width: 100%; 
-    height: 80vh;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column;
-    align-items:flex-start;
-    justify-content: center;
-    /* margin-left:30% */
+  min-width: 100%;
+  height: 80vh;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  /* margin-left:30% */
 }
-
-
-
 
 /* CSS */
 .button-63 {
   align-items: center;
-  background-image: linear-gradient(144deg,#573b8a, #6d44b8 50%,#bc00eb);
+  background-image: linear-gradient(144deg, #573b8a, #6d44b8 50%, #bc00eb);
   border: 0;
   border-radius: 8px;
   box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: #ffffff;
   display: flex;
   font-family: Phantomsans, sans-serif;
   font-size: 20px;
@@ -53,7 +49,6 @@
     min-width: 196px;
   }
 }
-
 
 /* #573b8a
 #6d44b8 */

@@ -14,7 +14,7 @@ import "./App.css";
 import ProductsByCategory from "./component/productsByCategory/ProductsByCategory";
 import Search from "./component/Search/Search";
 import Home from "./component/Home/Home";
-import CardPayment from "./component/CardPayment/CardPayment"
+import CardPayment from "./component/CardPayment/CardPayment";
 function App() {
   //create a global state for token
   const [token, setToken] = useState("");
@@ -61,15 +61,15 @@ function App() {
       {isopen ? <Category /> : null}
 
       <Routes>
-      <Route path="/" element={<Home/>} />
-        
+        <Route path="/" element={<Home />} />
+
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login setToken={setToken} />} />
         <Route
           path="/products"
           element={
             <Products
-            setCart={setCart}
+              setCart={setCart}
               cart={cart}
               getAllProducts={getAllProducts}
               resultpage={currentProducts}
@@ -82,16 +82,25 @@ function App() {
         />
         <Route
           path="/cart"
-          element={<Cart cart={cart} setCart={setCart} setProductId={setProductId} />}
+          element={
+            <Cart cart={cart} setCart={setCart} setProductId={setProductId} />
+          }
         ></Route>
-        <Route path="/category/:category" element={<ProductsByCategory setCart={setCart}
+        <Route
+          path="/category/:category"
+          element={
+            <ProductsByCategory
+              setCart={setCart}
               cart={cart}
               getAllProducts={getAllProducts}
               resultpage={currentProducts}
               productsPerPage={productsPerPage}
               totalProducts={result.length}
               paginate={paginate}
-              setProductId={setProductId}/>} />
+              setProductId={setProductId}
+            />
+          }
+        />
         <Route
           path="/productdetailes/:id"
           element={
@@ -130,7 +139,7 @@ function App() {
           element={<Update UpdateId={UpdateId} token={token} />}
         ></Route>
         <Route path="/create" element={<Create token={token} />}></Route>
-        <Route path="/order" element={<CardPayment token={token}/>}/>
+        <Route path="/order" element={<CardPayment token={token} />} />
       </Routes>
     </div>
   );

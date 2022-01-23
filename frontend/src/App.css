@@ -1,32 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
 .App {
   /* text-align: center; */
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   overflow-x: hidden;
   min-height: 100%;
   min-width: 100%;
   overflow-x: hidden;
-
 }
- header {
+header {
   display: flex;
-  flex-direction:row ;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 }
 .root {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   min-height: 100%;
   min-width: 100%;
 }
 /* body > #root > div {
   height: 90vh;
 } */
-html, body, #app, #app>div {
+html,
+body,
+#app,
+#app > div {
   min-height: 100%;
   min-width: 100%;
   overflow-x: hidden;
   margin: 0;
-  
 }

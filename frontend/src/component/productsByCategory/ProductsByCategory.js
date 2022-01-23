@@ -19,7 +19,6 @@ const ProductsByCategory = ({
 
   setProductId,
 }) => {
-
   const [productCategory, setProductCategory] = useState([]);
   //create pagination use states
   const [currentPage, setCurrentPage] = useState(1);
@@ -27,7 +26,7 @@ const ProductsByCategory = ({
   const [productsPerPage, setProductsPerPage] = useState(4);
 
   //logic for pagination
-  const [error,seterror] =useState("")
+  const [error, seterror] = useState("");
 
   const indexOfLastProduct = currentPage * productsPerPage;
   ////////////
@@ -53,7 +52,7 @@ const ProductsByCategory = ({
       })
       .catch((err) => {
         console.log("there is not product yet");
-        seterror(err.response)
+        seterror(err.response);
       });
   };
 

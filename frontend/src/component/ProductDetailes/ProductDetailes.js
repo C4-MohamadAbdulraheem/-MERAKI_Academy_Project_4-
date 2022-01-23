@@ -124,43 +124,50 @@ const ProductDetailes = ({
               </div>
               <span className="price">| Price : {product.price} J.D</span>
               <div className="add-to-product">
-                {localToken?<div className="qty">
+                {localToken ? (
+                  <div className="qty">
+                    <button
+                      className="button-55"
+                      onClick={() => {
+                        setCounter(counter + 1);
+                      }}
+                    >
+                      +
+                    </button>
+                    <p style={{ color: "#6d44b8" }}>{counter}</p>
+                    <button
+                      className="button-55"
+                      onClick={() => {
+                        setCounter(counter - 1);
+                      }}
+                    >
+                      -{" "}
+                    </button>
+                  </div>
+                ) : null}
+                {localToken ? (
                   <button
-                    className="button-55"
-                    onClick={() => {
-                      setCounter(counter + 1);
-                    }}
-                  >
-                    +
-                  </button>
-                  <p style={{ color: "#6d44b8" }}>{counter}</p>
-                  <button
-                    className="button-55"
-                    onClick={() => {
-                      setCounter(counter - 1);
-                    }}
-                  >
-                    -{" "}
-                  </button>
-                </div>:null}
-                {localToken?<button
-                  className="button-58"
-                  style={{ gap: "3%" }}
-                  onClick={(e) => {
-                    setCart([...cart, { ...product, number: counter }]);
-                    console.log(cart);
-                    if (localStorage.getItem("productCart") == null) {
-                      localStorage.setItem("productCart", []);
-                    }
+                    className="button-58"
+                    style={{ gap: "3%" }}
+                    onClick={(e) => {
+                      setCart([...cart, { ...product, number: counter }]);
+                      console.log(cart);
+                      if (localStorage.getItem("productCart") == null) {
+                        localStorage.setItem("productCart", []);
+                      }
 
-                    localStorage.setItem(
-                      "productCart",
-                      JSON.stringify([...cart, { ...product, number: counter }])
-                    );
-                  }}
-                >
-                  Add to Cart <AiOutlineShoppingCart />
-                </button>:null}
+                      localStorage.setItem(
+                        "productCart",
+                        JSON.stringify([
+                          ...cart,
+                          { ...product, number: counter },
+                        ])
+                      );
+                    }}
+                  >
+                    Add to Cart <AiOutlineShoppingCart />
+                  </button>
+                ) : null}
               </div>
               <Link
                 to="#"

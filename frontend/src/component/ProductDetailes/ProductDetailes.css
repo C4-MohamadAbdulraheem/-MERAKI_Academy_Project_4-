@@ -35,7 +35,7 @@
   justify-content: space-around;
   align-items: flex-start;
   width: 66%;
-  padding:1%
+  padding: 1%;
 }
 .title {
   font-size: 1.5em;
@@ -220,18 +220,18 @@
   display: flex;
   flex-direction: column;
   gap: 10%;
-  align-items: center ;
-  justify-content:center;
+  align-items: center;
+  justify-content: center;
   width: 50%;
   height: 50vh;
   padding: auto;
 }
-.admin-btn{
+.admin-btn {
   display: flex;
   flex-direction: row;
   gap: 3%;
 }
-.cat-amm{
+.cat-amm {
   display: flex;
   flex-direction: row;
   gap: 30%;

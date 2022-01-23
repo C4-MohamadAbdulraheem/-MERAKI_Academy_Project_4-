@@ -12,7 +12,7 @@ const Create = () => {
 
   const [message, setMessage] = useState("");
 
-  const createInfo = { title, description, price, ammount, image,category };
+  const createInfo = { title, description, price, ammount, image, category };
   console.log(createInfo);
   const createProduct = () => {
     axios
@@ -82,10 +82,9 @@ const Create = () => {
       <input
         className="update-inp"
         placeholder="image"
-
         type="text"
         onChange={(e) => {
-          setImage(e.target.value)
+          setImage(e.target.value);
           // setImage(URL.createObjectURL(e.target.files[0]));
         }}
       ></input>
